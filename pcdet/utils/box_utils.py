@@ -191,7 +191,7 @@ def boxes3d_to_corners3d_kitti_camera(boxes3d, bottom_center=True):
       2 -------- 1
     """
     boxes_num = boxes3d.shape[0]
-    l, w, h = boxes3d[:, 3], boxes3d[:, 4], boxes3d[:, 5]
+    l, h, w = boxes3d[:, 3], boxes3d[:, 4], boxes3d[:, 5]
     x_corners = np.array([l / 2., l / 2., -l / 2., -l / 2., l / 2., l / 2., -l / 2., -l / 2], dtype=np.float32).T
     z_corners = np.array([w / 2., -w / 2., -w / 2., w / 2., w / 2., -w / 2., -w / 2., w / 2.], dtype=np.float32).T
     if bottom_center:
