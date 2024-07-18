@@ -66,29 +66,104 @@ class DatasetTemplate(torch_data.Dataset):
     def __setstate__(self, d):
         self.__dict__.update(d)
 
-    @staticmethod
-    def generate_prediction_dicts(batch_dict, pred_dicts, class_names, output_path=None):
+    #@staticmethod
+    def generate_prediction_dicts(self, batch_dict, pred_dicts, class_names, output_path=None):
         """
-        To support a custom dataset, implement this function to receive the predicted results from the model, and then
-        transform the unified normative coordinate to your required coordinate, and optionally save them to disk.
-
         Args:
-            batch_dict: dict of original data from the dataloader
-            pred_dicts: dict of predicted results from the model
+            batch_dict:
+                frame_id:
+            pred_dicts: list of pred_dicts
                 pred_boxes: (N, 7), Tensor
                 pred_scores: (N), Tensor
                 pred_labels: (N), Tensor
             class_names:
-            output_path: if it is not None, save the results to this path
+            output_path:
+
         Returns:
 
         """
-        raise NotImplementedError
+        def get_template_prediction(num_samples):
+            ret_dict = {
+                'name': np.zeros(num_samples), 'truncated': np.zeros(num_samples),
+                'occluded': np.zeros(num_samples), 'alpha': np.zeros(num_samples),
+                'bbox': np.zeros([num_samples, 4]), 'dimensions': np.zeros([num_samples, 3]),
+                'location': np.zeros([num_samples, 3]), 'rotation_y': np.zeros(num_samples),
+                'score': np.zeros(num_samples), 'boxes_lidar': np.zeros([num_samples, 7])
+            }
+            return ret_dict
+
+        def generate_single_sample_dict(batch_index, box_dict):
+            pred_scores = box_dict['pred_scores'].cpu().numpy()
+            pred_boxes = box_dict['pred_boxes'].cpu().numpy()
+            pred_labels = box_dict['pred_labels'].cpu().numpy()
+            pred_dict = get_template_prediction(pred_scores.shape[0])
+            if pred_scores.shape[0] == 0:
+                return pred_dict
+
+            calib = batch_dict['calib'][batch_index]
+            image_shape = batch_dict['image_shape'][batch_index].cpu().numpy()
+
+            if self.dataset_cfg.get('SHIFT_COOR', None):
+                #print ("*******WARNING FOR SHIFT_COOR:", self.dataset_cfg.SHIFT_COOR)
+                pred_boxes[:, 0:3] -= self.dataset_cfg.SHIFT_COOR
+
+            # BOX FILTER
+            if self.dataset_cfg.get('TEST', None) and self.dataset_cfg.TEST.BOX_FILTER['FOV_FILTER']:
+                box_preds_lidar_center = pred_boxes[:, 0:3]
+                pts_rect = calib.lidar_to_rect(box_preds_lidar_center)
+                fov_flag = self.get_fov_flag(pts_rect, image_shape, calib, margin=5)
+                pred_boxes = pred_boxes[fov_flag]
+                pred_labels = pred_labels[fov_flag]
+                pred_scores = pred_scores[fov_flag]
+            
+            pred_boxes_camera = box_utils.boxes3d_lidar_to_kitti_camera(pred_boxes, calib)
+            pred_boxes_img = box_utils.boxes3d_kitti_camera_to_imageboxes(
+                pred_boxes_camera, calib, image_shape=image_shape
+            )
+
+            pred_dict['name'] = np.array(class_names)[pred_labels - 1]
+            pred_dict['alpha'] = -np.arctan2(-pred_boxes[:, 1], pred_boxes[:, 0]) + pred_boxes_camera[:, 6]
+            pred_dict['bbox'] = pred_boxes_img
+            pred_dict['dimensions'] = pred_boxes_camera[:, 3:6]
+            pred_dict['location'] = pred_boxes_camera[:, 0:3]
+            pred_dict['rotation_y'] = pred_boxes_camera[:, 6]
+            pred_dict['score'] = pred_scores
+            pred_dict['boxes_lidar'] = pred_boxes
+
+            return pred_dict
+
+        annos = []
+        for index, box_dict in enumerate(pred_dicts):
+            frame_id = batch_dict['frame_id'][index]
+
+            single_pred_dict = generate_single_sample_dict(index, box_dict)
+            single_pred_dict['frame_id'] = frame_id
+            annos.append(single_pred_dict)
+
+            if output_path is not None:
+                cur_det_file = output_path / ('%s.txt' % frame_id)
+                with open(cur_det_file, 'w') as f:
+                    bbox = single_pred_dict['bbox']
+                    loc = single_pred_dict['location']
+                    dims = single_pred_dict['dimensions']  # lhw -> hwl
+
+                    for idx in range(len(bbox)):
+                        print('%s -1 -1 %.4f %.4f %.4f %.4f %.4f %.4f %.4f %.4f %.4f %.4f %.4f %.4f %.4f'
+                              % (single_pred_dict['name'][idx], single_pred_dict['alpha'][idx],
+                                 bbox[idx][0], bbox[idx][1], bbox[idx][2], bbox[idx][3],
+                                 dims[idx][1], dims[idx][2], dims[idx][0], loc[idx][0],
+                                 loc[idx][1], loc[idx][2], single_pred_dict['rotation_y'][idx],
+                                 single_pred_dict['score'][idx]), file=f)
+
+        return annos
     
     @staticmethod
     def __vis__(points, gt_boxes, ref_boxes=None, scores=None, use_fakelidar=False):
-        import visual_utils.visualize_utils as vis
-        import mayavi.mlab as mlab
+        import visual_utils.open3d_vis_utils as vis
+        #import visual_utils.visualize_utils as vis
+        #import mayavi.mlab as mlab
+        #mlab.options.offscreen = True
+
         gt_boxes = copy.deepcopy(gt_boxes)
         if use_fakelidar:
             gt_boxes = box_utils.boxes3d_kitti_lidar_to_fakelidar(gt_boxes)
@@ -99,7 +174,7 @@ class DatasetTemplate(torch_data.Dataset):
                 ref_boxes = box_utils.boxes3d_kitti_lidar_to_fakelidar(ref_boxes)
 
         vis.draw_scenes(points, gt_boxes, ref_boxes=ref_boxes, ref_scores=scores)
-        mlab.show(stop=True)
+        #mlab.show(stop=True)
 
     @staticmethod
     def __vis_fake__(points, gt_boxes, ref_boxes=None, scores=None, use_fakelidar=True):

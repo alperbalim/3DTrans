@@ -15,6 +15,8 @@ from .waymo.waymo_dataset_ada import ActiveWaymoDataset
 from .pandaset.pandaset_dataset import PandasetDataset
 from .lyft.lyft_dataset import LyftDataset
 from .lyft.lyft_dataset_ada import ActiveLyftDataset
+from .custom.custom_dataset import CustomDataset
+
 
 from .once.once_dataset import ONCEDataset
 from .once.once_dataset_ada import ActiveONCEDataset
@@ -35,6 +37,7 @@ __all__ = {
     'PandasetDataset': PandasetDataset,
     'LyftDataset': LyftDataset,
     'ONCEDataset': ONCEDataset,
+    'CustomDataset': CustomDataset,
     'ActiveLyftDataset': ActiveLyftDataset,
     'ActiveONCEDataset': ActiveONCEDataset,
     'ONCEDatasetPretrain_ADPT': ONCEDatasetPretrain_ADPT
