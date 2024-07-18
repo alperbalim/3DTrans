@@ -1,0 +1,84 @@
+2024-07-15 19:20:06,402 kitti_dataset.py include_kitti_data 54  INFO  Loading KITTI dataset
+2024-07-15 19:20:06,402 kitti_dataset.py include_kitti_data 54  INFO  Loading KITTI dataset
+2024-07-15 19:20:06,402 kitti_dataset.py include_kitti_data 54  INFO  Loading KITTI dataset
+2024-07-15 19:20:06,411 kitti_dataset.py include_kitti_data 75  INFO  Total samples for KITTI dataset: 500
+2024-07-15 19:20:06,411 kitti_dataset.py include_kitti_data 75  INFO  Total samples for KITTI dataset: 500
+2024-07-15 19:20:06,411 kitti_dataset.py include_kitti_data 75  INFO  Total samples for KITTI dataset: 500
+2024-07-15 19:38:27,434 kitti_dataset.py include_kitti_data 54  INFO  Loading KITTI dataset
+2024-07-15 19:38:27,440 kitti_dataset.py include_kitti_data 75  INFO  Total samples for KITTI dataset: 500
+2024-07-15 19:38:50,960 kitti_dataset.py include_kitti_data 54  INFO  Loading KITTI dataset
+2024-07-15 19:38:50,960 kitti_dataset.py include_kitti_data 54  INFO  Loading KITTI dataset
+2024-07-15 19:38:50,968 kitti_dataset.py include_kitti_data 75  INFO  Total samples for KITTI dataset: 500
+2024-07-15 19:38:50,968 kitti_dataset.py include_kitti_data 75  INFO  Total samples for KITTI dataset: 500
+2024-07-15 19:39:15,501 kitti_dataset.py include_kitti_data 54  INFO  Loading KITTI dataset
+2024-07-15 19:39:15,511 kitti_dataset.py include_kitti_data 75  INFO  Total samples for KITTI dataset: 500
+2024-07-15 19:40:13,553 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:40:13,560 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:41:24,876 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:41:24,883 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:42:10,974 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:42:10,981 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:45:29,514 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:45:29,521 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:49:30,880 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:49:30,887 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:57:52,765 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:57:52,765 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:57:52,774 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:57:52,774 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:58:08,439 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:58:08,439 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:58:08,439 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 19:58:08,574 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:58:08,574 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 19:58:08,574 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 20:31:24,749 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 20:31:24,749 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 20:31:24,749 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 20:31:24,763 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 20:31:24,763 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 20:31:24,763 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 21:02:34,174 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 21:02:34,180 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 21:02:59,800 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 21:02:59,918 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:02:12,345 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:02:12,345 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:02:12,356 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:02:12,356 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:04:03,219 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:04:03,219 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:04:03,219 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:04:03,229 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:04:03,229 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:04:03,229 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:05:43,317 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:05:43,317 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:05:43,317 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:05:43,317 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:05:43,334 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:05:43,334 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:05:43,334 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:05:43,334 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:06:28,414 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:06:28,414 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:06:28,414 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:06:28,414 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:06:28,414 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:06:28,424 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:06:28,424 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:06:28,424 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:06:28,424 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:06:28,424 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:08:01,110 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:08:01,110 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:08:01,110 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:08:01,110 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:08:01,110 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:08:01,110 custom_dataset.py include_custom_data 43  INFO  Loading Custom dataset.
+2024-07-15 22:08:01,119 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:08:01,119 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:08:01,119 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:08:01,119 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:08:01,119 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500
+2024-07-15 22:08:01,119 custom_dataset.py include_custom_data 57  INFO  Total samples for CUSTOM dataset: 500

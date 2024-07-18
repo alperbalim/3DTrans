@@ -43,14 +43,21 @@ class Calibration(object):
         self.P2 = calib['P2']  # 3 x 4
         self.R0 = calib['R0']  # 3 x 3
         self.V2C = calib['Tr_velo2cam']  # 3 x 4
-
-        # Camera intrinsics and extrinsics
-        self.cu = self.P2[0, 2]
-        self.cv = self.P2[1, 2]
-        self.fu = self.P2[0, 0]
-        self.fv = self.P2[1, 1]
-        self.tx = self.P2[0, 3] / (-self.fu)
-        self.ty = self.P2[1, 3] / (-self.fv)
+        if (self.P2 == 0).all() == True:
+            # Camera intrinsics and extrinsics
+            self.cu = self.P2[0, 2]
+            self.cv = self.P2[1, 2]
+            self.fu = self.P2[0, 0]
+            self.fv = self.P2[1, 1]
+            self.tx = self.P2[0, 3] / 1
+            self.ty = self.P2[1, 3] / 1
+        else:
+            self.cu = self.P2[0, 2]
+            self.cv = self.P2[1, 2]
+            self.fu = self.P2[0, 0]
+            self.fv = self.P2[1, 1]
+            self.tx = self.P2[0, 3] / (-self.fu)
+            self.ty = self.P2[1, 3] / (-self.fv)
 
     def cart_to_hom(self, pts):
         """

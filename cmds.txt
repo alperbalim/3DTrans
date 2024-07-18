@@ -1,0 +1,31 @@
+python -m pcdet.datasets.kitti_custom.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/custom/custom_dataset.yaml custom_kitti
+
+python -m pcdet.datasets.kitti_custom.kitti_dataset create_kitti_infos tools/cfgs/dataset_configs/custom/awsim_dataset.yaml awsim
+
+CUDA_VISIBLE_DEVICES=0,1 bash scripts/dist_train.sh 2 --cfg_file /root/3DTrans/tools/cfgs/custom/pv_rcnn.yaml
+
+AWSIM Dataset:
+Database CAR: 3068
+Database TRUCK: 877
+Database BICYCLE: 544
+Database BUS: 1067
+Database PEDESTRIAN: 2568
+Database UNKNOWN: 41
+Database MOTORCYCLE: 27
+
+
+Custom Dataset:
+
+Database CAR: 1436
+Database TRUCK: 182
+Database BUS: 184
+Database HUMAN: 385
+Database TRAILER: 11
+Database None: 11
+Database 2-WHEEL: 12
+Database MISC.: 4
+
+
+nOTE THAT:
+point cloud range along z-axis / voxel_size is 40
+point cloud range along x,y -axis / voxel_size is the multiple of 16.
