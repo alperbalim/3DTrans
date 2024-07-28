@@ -337,7 +337,7 @@ def fused_compute_statistics(overlaps,
         dc_num += dc_nums[i]
 
 
-def calculate_iou_partly(gt_annos, dt_annos, metric, num_parts=25):
+def calculate_iou_partly(gt_annos, dt_annos, metric, num_parts=50):
     """fast iou algorithm. this function can be used independently to
     do result analysis. Must be used in CAMERA coordinate system.
     Args:
@@ -398,7 +398,6 @@ def calculate_iou_partly(gt_annos, dt_annos, metric, num_parts=25):
     overlaps = []
     example_idx = 0
     for j, num_part in enumerate(split_parts):
-        gc.collect()
         gt_annos_part = gt_annos[example_idx:example_idx + num_part]
         dt_annos_part = dt_annos[example_idx:example_idx + num_part]
         gt_num_idx, dt_num_idx = 0, 0
@@ -422,7 +421,8 @@ def _prepare_data(gt_annos, dt_annos, current_class, difficulty):
     ignored_gts, ignored_dets, dontcares = [], [], []
     total_num_valid_gt = 0
     for i in range(len(gt_annos)):
-        num_valid_gt, ignored_gt, ignored_det, dc_bboxes = clean_data(gt_annos[i], dt_annos[i], current_class, difficulty)
+        rets = clean_data(gt_annos[i], dt_annos[i], current_class, difficulty)
+        num_valid_gt, ignored_gt, ignored_det, dc_bboxes = rets
         ignored_gts.append(np.array(ignored_gt, dtype=np.int64))
         ignored_dets.append(np.array(ignored_det, dtype=np.int64))
         if len(dc_bboxes) == 0:
@@ -452,7 +452,7 @@ def eval_class(gt_annos,
                metric,
                min_overlaps,
                compute_aos=False,
-               num_parts=50):
+               num_parts=100):
     """Kitti eval. support 2d/bev/3d/aos eval. support 0.5:0.05:0.95 coco AP.
     Args:
         gt_annos: dict, must from get_label_annos() in kitti_common.py
@@ -470,26 +470,26 @@ def eval_class(gt_annos,
     num_examples = len(gt_annos)
     split_parts = get_split_parts(num_examples, num_parts)
 
-    overlaps, parted_overlaps, total_dt_num, total_gt_num = calculate_iou_partly(dt_annos, gt_annos, metric, num_parts)
+    rets = calculate_iou_partly(dt_annos, gt_annos, metric, num_parts)
+    overlaps, parted_overlaps, total_dt_num, total_gt_num = rets
     N_SAMPLE_PTS = 41
     num_minoverlap = len(min_overlaps)
     num_class = len(current_classes)
     num_difficulty = len(difficultys)
     precision = np.zeros(
-        [num_class, num_difficulty, num_minoverlap, N_SAMPLE_PTS],dtype=np.float32)
+        [num_class, num_difficulty, num_minoverlap, N_SAMPLE_PTS])
     recall = np.zeros(
-        [num_class, num_difficulty, num_minoverlap, N_SAMPLE_PTS],dtype=np.float32)
-    aos = np.zeros([num_class, num_difficulty, num_minoverlap, N_SAMPLE_PTS],dtype=np.float32)
+        [num_class, num_difficulty, num_minoverlap, N_SAMPLE_PTS])
+    aos = np.zeros([num_class, num_difficulty, num_minoverlap, N_SAMPLE_PTS])
     for m, current_class in enumerate(current_classes):
         for l, difficulty in enumerate(difficultys):
-            gc.collect()
+            rets = _prepare_data(gt_annos, dt_annos, current_class, difficulty)
             (gt_datas_list, dt_datas_list, ignored_gts, ignored_dets,
-             dontcares, total_dc_num, total_num_valid_gt) = _prepare_data(gt_annos, dt_annos, current_class, difficulty)
+             dontcares, total_dc_num, total_num_valid_gt) = rets
             for k, min_overlap in enumerate(min_overlaps[:, metric, m]):
-                print("-------------------- Phase:",m,l,k)
                 thresholdss = []
                 for i in range(len(gt_annos)):
-                    tp, fp, fn, similarity, thresholds = compute_statistics_jit(
+                    rets = compute_statistics_jit(
                         overlaps[i],
                         gt_datas_list[i],
                         dt_datas_list[i],
@@ -500,11 +500,12 @@ def eval_class(gt_annos,
                         min_overlap=min_overlap,
                         thresh=0.0,
                         compute_fp=False)
+                    tp, fp, fn, similarity, thresholds = rets
                     thresholdss += thresholds.tolist()
                 thresholdss = np.array(thresholdss)
                 thresholds = get_thresholds(thresholdss, total_num_valid_gt)
-                thresholds = np.array(thresholds,dtype=np.float32)
-                pr = np.zeros([len(thresholds), 4],dtype=np.float32)
+                thresholds = np.array(thresholds)
+                pr = np.zeros([len(thresholds), 4])
                 idx = 0
                 for j, num_part in enumerate(split_parts):
                     gt_datas_part = np.concatenate(
@@ -599,8 +600,7 @@ def do_eval(gt_annos,
 
         if PR_detail_dict is not None:
             PR_detail_dict['aos'] = ret['orientation']
-    del ret
-    print("first class evaluated")
+
     ret = eval_class(gt_annos, dt_annos, current_classes, difficultys, 1,
                      min_overlaps)
     mAP_bev = get_mAP(ret["precision"])
@@ -608,14 +608,13 @@ def do_eval(gt_annos,
 
     if PR_detail_dict is not None:
         PR_detail_dict['bev'] = ret['precision']
-    del ret
+
     ret = eval_class(gt_annos, dt_annos, current_classes, difficultys, 2,
                      min_overlaps)
     mAP_3d = get_mAP(ret["precision"])
     mAP_3d_R40 = get_mAP_R40(ret["precision"])
     if PR_detail_dict is not None:
         PR_detail_dict['3d'] = ret['precision']
-    del ret
     return mAP_bbox, mAP_bev, mAP_3d, mAP_aos, mAP_bbox_R40, mAP_bev_R40, mAP_3d_R40, mAP_aos_R40
 
 
