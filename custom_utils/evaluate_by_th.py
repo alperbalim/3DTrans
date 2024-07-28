@@ -4,7 +4,7 @@ sys.path.insert(0, '/root/3DTrans/')
 import pickle
 import numpy as np
 import pandas as pd
-from pcdet.datasets.kitti.kitti_object_eval_python.eval import do_eval, eval_class, calculate_iou_partly
+from pcdet.datasets.kitti.kitti_object_eval_python.eval import *
 
 # Tahminleri ve ground truth verilerini yükleme
 with open('/root/3DTrans/output/root/3DTrans/tools/cfgs/custom/pv_rcnn/default/eval/epoch_80/test/default/result.pkl', 'rb') as f:
@@ -32,8 +32,10 @@ for dt in predictions:
 # Threshold değerlerini belirleme
 ths = np.linspace(0.05, 0.95, 19)  # 0.1 ile 0.9 arasında 9 eşit aralıklı değer
 #[num_minoverlap, metric, num_class]
-min_overlaps = np.ones((ths.shape[0],3,5))
-min_overlaps[:,2,0] = ths
+min_overlaps = np.ones((ths.shape[0],3,3))
+for i in range(0,3):
+    for j in range(0,3):
+        min_overlaps[:,i,j] = ths
 
 # do_eval(gt_annos,  dt_annos, current_classes, min_overlaps, compute_aos=False, PR_detail_dict=None):
 #mAP result: [num_class, num_diff, num_minoverlap]
@@ -42,7 +44,8 @@ mAPbbox, mAPbev, mAP3d, mAPaos, mAPbbox_R40, mAPbev_R40, mAP3d_R40, mAPaos_R40 =
 
 # eval_class(gt_annos, dt_annos, current_classes, difficultys,  metric, min_overlaps, compute_aos=False, num_parts=100):
 res =eval_class(gt_annos,  dt_annos, [0], [0],  2, min_overlaps, compute_aos=False, num_parts=100)
-
+map = get_mAP_R40(res["precision"])
+print(res)
 
 """
     # Sonuçları saklama

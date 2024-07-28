@@ -424,7 +424,7 @@ class WaymoDataset(DatasetTemplate):
             return 'No ground-truth boxes for evaluation', {}
 
         def kitti_eval(eval_det_annos, eval_gt_annos):
-            from ..kitti.kitti_object_eval_python import eval as kitti_eval
+            from ..kitti.kitti_object_eval_python import eval_partly as kitti_eval
             from ..kitti import kitti_utils
 
             map_name_to_kitti = {

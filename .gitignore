@@ -30,4 +30,5 @@ tools/update_reminder.txt
 
 tools/train_random_source_target.py
 */logs/*
-/data
+/data/
+core.*

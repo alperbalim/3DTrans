@@ -55,13 +55,31 @@ ret =eval_class(eval_gt_annos,  eval_det_annos, [0], [0],  2, min_overlaps, comp
 mAP_3d_R40 = get_mAP_R40(ret["precision"])
 mAP_bev_R40 = get_mAP_R40(ret["precision"])
 """
-rets = _prepare_data(eval_gt_annos, eval_det_annos, 0, 0)
+
+
+
+ths = np.linspace(0.05, 0.95, 19)  # 0.1 ile 0.9 arasında 9 eşit aralıklı değer
+#[num_minoverlap, metric, num_class]
+min_overlaps = np.ones((ths.shape[0],3,3))
+for i in range(0,3):
+    for j in range(0,3):
+        min_overlaps[:,i,j] = ths
+
+# do_eval(gt_annos,  dt_annos, current_classes, min_overlaps, compute_aos=False, PR_detail_dict=None):
+#mAP result: [num_class, num_diff, num_minoverlap]
+mAPbbox, mAPbev, mAP3d, mAPaos, mAPbbox_R40, mAPbev_R40, mAP3d_R40, mAPaos_R40 = do_eval(eval_gt_annos, eval_det_annos, [0], min_overlaps, compute_aos=False)
+res =eval_class(eval_gt_annos,  eval_det_annos, [0], [0],  2, min_overlaps, compute_aos=False, num_parts=100)
+np.asarray(res["precision"])
+class_obj = 0
+difficulty= 0
+
+rets = _prepare_data(eval_gt_annos, eval_det_annos, class_obj, difficulty)
 (gt_datas_list, dt_datas_list, ignored_gts, ignored_dets, dontcares, total_dc_num, total_num_valid_gt) = rets
 overlaps, parted_overlaps, total_dt_num, total_gt_num  = calculate_iou_partly(eval_det_annos, eval_gt_annos, 2, 41)
 
 
 from prettytable import PrettyTable
-t = PrettyTable(['TH', 'Precisin', "Recall", "tot"])
+t = PrettyTable(['TH', 'Precisin', "Recall", "Acc."])
 
 t2 = PrettyTable(['TH', 'tp', "fp", "fn"])
 
