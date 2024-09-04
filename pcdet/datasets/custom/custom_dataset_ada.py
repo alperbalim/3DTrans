@@ -13,10 +13,11 @@ from ...utils import box_utils, common_utils, object3d_custom
 from ...utils import self_training_utils
 
 from ..dataset import DatasetTemplate
-        
+from random import sample        
+from pathlib import Path
 
-class CustomDataset(DatasetTemplate):
-    def __init__(self, dataset_cfg, class_names, training=True, root_path=None, logger=None, ext='.bin'):
+class ActiveCustomDataset(DatasetTemplate):
+    def __init__(self, dataset_cfg, class_names, training=True, root_path=None, logger=None, ext='.bin',sample_info_path=None):
         """
         Args:
             root_path:
@@ -35,7 +36,7 @@ class CustomDataset(DatasetTemplate):
         self.sample_id_list = [x.strip() for x in open(split_dir).readlines()] if os.path.exists(split_dir) else None
 
         self.custom_infos = []
-        self.include_custom_data(self.mode)
+        self.include_custom_data(self.mode, sample_info_path)
         self.ext = ext
         self.map_class_to_kitti = self.dataset_cfg.MAP_CLASS_TO_KITTI
 
@@ -56,12 +57,24 @@ class CustomDataset(DatasetTemplate):
         input_dict['ign_ps_bbox'] = gt_boxes.shape[0] - input_dict['pos_ps_bbox']
         input_dict.pop('num_points_in_gt', None)
         
-    def include_custom_data(self, mode):
+    def include_custom_data(self, mode, sample_info_path=None):
         if self.logger is not None:
             self.logger.info('Loading Custom dataset.')
         custom_infos = []
 
         for info_path in self.dataset_cfg.INFO_PATH[mode]:
+            if sample_info_path is not None and str(sample_info_path).split(':')[0] != 's3':
+                info_path = sample_info_path
+                if not Path(info_path).exists():
+                    continue
+                with open(info_path, 'rb') as f:
+                    infos = pickle.load(f)
+                    custom_infos.extend(infos)
+            elif sample_info_path is not None and str(sample_info_path).split(':')[0] == 's3':
+                info_path = sample_info_path
+                pkl_bytes = self.client.get(info_path, update_cache=True)
+                infos = pickle.load(io.BytesIO(pkl_bytes))
+                custom_infos.extend(infos)
             info_path = self.root_path / info_path
             if not info_path.exists():
                 continue

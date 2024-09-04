@@ -16,7 +16,7 @@ from .pandaset.pandaset_dataset import PandasetDataset
 from .lyft.lyft_dataset import LyftDataset
 from .lyft.lyft_dataset_ada import ActiveLyftDataset
 from .custom.custom_dataset import CustomDataset
-
+from .custom.custom_dataset_ada import ActiveCustomDataset
 
 from .once.once_dataset import ONCEDataset
 from .once.once_dataset_ada import ActiveONCEDataset
@@ -30,6 +30,7 @@ __all__ = {
     'DatasetTemplate': DatasetTemplate,
     'KittiDataset': KittiDataset,
     'ActiveKittiDataset': ActiveKittiDataset,
+    'ActiveCustomDataset': ActiveCustomDataset,
     'NuScenesDataset': NuScenesDataset,
     'ActiveNuScenesDataset': ActiveNuScenesDataset,
     'WaymoDataset': WaymoDataset,
