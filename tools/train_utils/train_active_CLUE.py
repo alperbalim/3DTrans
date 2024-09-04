@@ -115,7 +115,7 @@ def train_active_model_target(model, optimizer, source_train_loader, target_trai
                        annotation_budget, target_file_path, sample_save_path, cfg, batch_size, workers, dist_train,
                        source_sampler=None, target_sampler=None, lr_warmup_scheduler=None, ckpt_save_interval=1,
                        max_ckpt_save_num=50, merge_all_iters_to_one_epoch=False, logger=None, ema_model=None):
-    target_list = active_learning_2D_utils.get_dataset_list(target_file_path, oss=True)
+    target_list = active_learning_2D_utils.get_dataset_list(target_file_path, oss=False)
 
     sample_list = []
     sample_train_loader = None

@@ -275,7 +275,7 @@ def train_active_model_source(model, optimizer, source_train_loader, target_trai
                               sample_epoch, source_budget, source_file_path, sample_save_path, cfg, batch_size, workers, dist_train,
                               source_sampler=None, target_sampler=None, sample_sampler=None, lr_warmup_scheduler=None, ckpt_save_interval=1,
                               max_ckpt_save_num=50, merge_all_iters_to_one_epoch=False, logger=None, ema_model=None):
-    source_list = active_learning_utils.get_dataset_list(source_file_path, oss=True)
+    source_list = active_learning_utils.get_dataset_list(source_file_path, oss=False)
     sample_list_source = []
     sample_train_loader = None
     target_name = cfg['DATA_CONFIG_TAR']['DATASET']
@@ -391,7 +391,7 @@ def train_active_model_source_2(model, optimizer, source_train_loader, target_tr
                               sample_epoch, source_budget, source_file_path, sample_save_path, cfg, batch_size, workers, dist_train,
                               source_sampler=None, target_sampler=None, sample_sampler=None, lr_warmup_scheduler=None, ckpt_save_interval=1,
                               max_ckpt_save_num=50, merge_all_iters_to_one_epoch=False, logger=None, ema_model=None):
-    source_list = active_learning_utils.get_dataset_list(source_file_path, oss=True)
+    source_list = active_learning_utils.get_dataset_list(source_file_path, oss=False)
     sample_list_source = []
     sample_train_loader = None
     target_name = cfg['DATA_CONFIG_TAR']['DATASET']
@@ -515,7 +515,7 @@ def train_active_model_source_only(model, optimizer, source_train_loader, target
         sample_interval = cfg['DATA_CONFIG']['SAMPLED_INTERVAL'].get('train', 1)
     else:
         sample_interval = 1
-    source_list = active_learning_utils.get_dataset_list(source_file_path, oss=True, waymo=waymo_source, sample_interval=sample_interval)
+    source_list = active_learning_utils.get_dataset_list(source_file_path, oss=False, waymo=waymo_source, sample_interval=sample_interval)
     print('source_list % d' % len(source_list))
     sample_list_source = []
     accumulated_iter_detector, accumulated_iter_discriminator = start_iter, start_iter

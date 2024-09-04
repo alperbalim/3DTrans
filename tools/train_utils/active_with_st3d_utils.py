@@ -561,7 +561,7 @@ def train_active_with_st3d(model, optimizer, source_train_loader, target_train_l
                          max_ckpt_save_num=50, merge_all_iters_to_one_epoch=False, logger=None, ema_model=None):
     accumulated_iter_detector, accumulated_iter_discriminator = start_iter, start_iter
     target_name = cfg['DATA_CONFIG_TAR']['DATASET']
-    target_list = active_learning_utils.get_target_list(target_file_path, oss=True)
+    target_list = active_learning_utils.get_target_list(target_file_path, oss=False)
     sample_list = []
     sample_train_loader = None
 
