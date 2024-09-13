@@ -200,12 +200,17 @@ def main():
         optimizer_detector, total_iters_each_epoch=len(source_sample_loader), total_epochs=args.epochs,
         last_epoch=last_epoch, optim_cfg=cfg.OPTIMIZATION
     )
-
-    lr_scheduler_discriminator, lr_warmup_scheduler_discriminator = build_scheduler(
-        optimizer_discriminator, total_iters_each_epoch=len(source_loader), total_epochs=args.epochs,
-        last_epoch=last_epoch, optim_cfg=cfg.OPTIMIZATION.DISCRIMINATOR
-    )
-
+    try:
+        lr_scheduler_discriminator, lr_warmup_scheduler_discriminator = build_scheduler(
+            optimizer_discriminator, total_iters_each_epoch=len(source_loader), total_epochs=args.epochs,
+            last_epoch=last_epoch, optim_cfg=cfg.OPTIMIZATION.DISCRIMINATOR
+        )
+    except: # IF last lr is not recorded to model ckpt
+        optimizer_discriminator.param_groups[0]['initial_lr']=0.001
+        lr_scheduler_discriminator, lr_warmup_scheduler_discriminator = build_scheduler(
+            optimizer_discriminator, total_iters_each_epoch=len(source_loader), total_epochs=args.epochs,
+            last_epoch=last_epoch, optim_cfg=cfg.OPTIMIZATION.DISCRIMINATOR
+        )
     lr_scheduler_list = [lr_scheduler_detector, lr_scheduler_discriminator]
 
     # -----------------------start training---------------------------
