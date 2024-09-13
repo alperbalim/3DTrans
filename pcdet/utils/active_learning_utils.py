@@ -170,7 +170,7 @@ def get_dataset_list(dataset_file, oss, sample_interval=10, waymo=False):
 
 
 def update_sample_list(sample_list, target_list, sample_frame_id, epoch, save_path, target_name, rank):
-    if target_name == 'ActiveKittiDataset':
+    if target_name == 'ActiveKittiDataset' or target_name == 'ActiveCustomDataset':
         new_sample_list = [item for item in target_list if item['point_cloud']['lidar_idx'] in sample_frame_id]
     elif target_name == 'ActiveNuScenesDataset':
         new_sample_list = [item for item in target_list if Path(item['lidar_path']).stem in sample_frame_id]
@@ -184,7 +184,7 @@ def update_sample_list(sample_list, target_list, sample_frame_id, epoch, save_pa
 
 
 def update_sample_list_dual(sample_list, dataset_list, sample_frame_id, epoch, save_path, dataset_name, rank, domain='source'):
-    if dataset_name == 'ActiveKittiDataset':
+    if dataset_name == 'ActiveKittiDataset' or dataset_name == 'ActiveCustomDataset':
         assert domain == 'target'
         new_sample_list = [item for item in dataset_list if item['point_cloud']['lidar_idx'] in sample_frame_id]
         sample_list = sample_list + new_sample_list
@@ -213,7 +213,7 @@ def update_sample_list_dual(sample_list, dataset_list, sample_frame_id, epoch, s
 
 
 def update_target_list(target_list, sample_frame_id, epoch, save_path, target_name, rank):
-    if target_name == 'ActiveKittiDataset':
+    if target_name == 'ActiveKittiDataset' or target_name == 'ActiveCustomDataset':
         target_list = [item for item in target_list if item['point_cloud']['lidar_idx'] not in sample_frame_id]
     elif target_name == 'ActiveNuScenesDataset':
         target_list = [item for item in target_list if Path(item['lidar_path']).stem not in sample_frame_id]
