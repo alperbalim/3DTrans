@@ -1,52 +1,35 @@
-ADA_STAGE: TARGET
-CLASS_NAMES: ['car']
+CLASS_NAMES: ['Car', 'Pedestrian', 'Cyclist']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/ADA/ada_nuscenes_dataset_gt_D_v2.yaml
-    FILE_PATH: #PATH_TO_SAMPLED_DB
-    MAX_SWEEPS: 1
-    PRED_VELOCITY: False
-    BALANCED_RESAMPLING: True
-    SHIFT_COOR: [ 0.0, 0.0, 1.8 ]
-
+    _BASE_CONFIG_: cfgs/dataset_configs/custom/awsim_dataset_custom_32.yaml
     DATA_AUGMENTOR:
         DISABLE_AUG_LIST: ['placeholder']
         AUG_CONFIG_LIST:
+            - NAME: gt_sampling
+              USE_ROAD_PLANE: False
+              DB_INFO_PATH:
+                  - custom_dbinfos_train.pkl
+              PREPARE: {
+                 filter_by_min_points: ['Car:10', 'Pedestrian:10', 'Cyclist:10']
+              }
 
-            - NAME: normalize_object_size
-              SIZE_RES: [ -0.75, -0.34, -0.2 ]
+              SAMPLE_GROUPS: ['Car:15','Pedestrian:10', 'Cyclist:10']
+              NUM_POINT_FEATURES: 4
+              DATABASE_WITH_FAKELIDAR: False
+              REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
+              LIMIT_WHOLE_SCENE: False
 
             - NAME: random_world_flip
-              ALONG_AXIS_LIST: [ 'x', 'y' ]
+              ALONG_AXIS_LIST: ['x']
 
             - NAME: random_world_rotation
-              WORLD_ROT_ANGLE: [ -0.3925, 0.3925 ]
+              WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
 
             - NAME: random_world_scaling
-              WORLD_SCALE_RANGE: [ 0.95, 1.05 ]
-
-
-DATA_CONFIG_TAR:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
-    FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
-    TARGET: True
-    FOV_POINTS_ONLY: False
-    CLASS_NAMES: ['Car']
-    SHIFT_COOR: [0.0, 0.0, 2.4]
-
-
-DATA_CONFIG_SAMPLE:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
-    TARGET: True
-    FOV_POINTS_ONLY: False
-    CLASS_NAMES: ['Car']
-    SHIFT_COOR: [0.0, 0.0, 2.4]
-
-
-
+              WORLD_SCALE_RANGE: [0.95, 1.05]
 
 MODEL:
-    NAME: ActiveDualPVRCNN
+    NAME: PVRCNN
 
     VFE:
         NAME: MeanVFE
@@ -68,10 +51,9 @@ MODEL:
         NUM_UPSAMPLE_FILTERS: [256, 256]
 
     DENSE_HEAD:
-        NAME: ActiveAnchorHeadSingle1
+        NAME: AnchorHeadSingle
         CLASS_AGNOSTIC: False
 
-        MARGIN_SCALE: 1.0
         USE_DIRECTION_CLASSIFIER: True
         DIR_OFFSET: 0.78539
         DIR_LIMIT_OFFSET: 0.0
@@ -79,14 +61,34 @@ MODEL:
 
         ANCHOR_GENERATOR_CONFIG: [
             {
-                'class_name': 'car',
-                'anchor_sizes': [[4.2, 2.0, 1.6]],
+                'class_name': 'Car',
+                'anchor_sizes': [[3.9, 1.6, 1.56]],
                 'anchor_rotations': [0, 1.57],
-                'anchor_bottom_heights': [0],
+                'anchor_bottom_heights': [-1.78],
                 'align_center': False,
                 'feature_map_stride': 8,
-                'matched_threshold': 0.55,
-                'unmatched_threshold': 0.4
+                'matched_threshold': 0.6,
+                'unmatched_threshold': 0.45
+            },
+            {
+                'class_name': 'Pedestrian',
+                'anchor_sizes': [[0.8, 0.6, 1.73]],
+                'anchor_rotations': [0, 1.57],
+                'anchor_bottom_heights': [-0.6],
+                'align_center': False,
+                'feature_map_stride': 8,
+                'matched_threshold': 0.5,
+                'unmatched_threshold': 0.35
+            },
+            {
+                'class_name': 'Cyclist',
+                'anchor_sizes': [[1.76, 0.6, 1.73]],
+                'anchor_rotations': [0, 1.57],
+                'anchor_bottom_heights': [-0.6],
+                'align_center': False,
+                'feature_map_stride': 8,
+                'matched_threshold': 0.5,
+                'unmatched_threshold': 0.35
             }
         ]
 
@@ -109,12 +111,14 @@ MODEL:
     PFE:
         NAME: VoxelSetAbstraction
         POINT_SOURCE: raw_points
-        NUM_KEYPOINTS: 4096
+        NUM_KEYPOINTS: 2048
         NUM_OUTPUT_FEATURES: 128
         SAMPLE_METHOD: FPS
 
-        FEATURES_SOURCE: ['bev', 'x_conv3', 'x_conv4', 'raw_points']
+        FEATURES_SOURCE: ['bev', 'x_conv1', 'x_conv2', 'x_conv3', 'x_conv4', 'raw_points']
         SA_LAYER:
+            bev:
+                DOWNSAMPLE_FACTOR: 1
             raw_points:
                 MLPS: [[16, 16], [16, 16]]
                 POOL_RADIUS: [0.4, 0.8]
@@ -140,10 +144,6 @@ MODEL:
                 POOL_RADIUS: [2.4, 4.8]
                 NSAMPLE: [16, 32]
 
-    DISCRIMINATOR:
-        NAME: ActiveBEVDiscriminator_Conv
-        FEATURE_DIM: 512
-
     POINT_HEAD:
         NAME: PointHeadSimple
         CLS_FC: [256, 256]
@@ -158,7 +158,7 @@ MODEL:
             }
 
     ROI_HEAD:
-        NAME: ActivePVRCNNHead
+        NAME: PVRCNNHead
         CLASS_AGNOSTIC: True
 
         SHARED_FC: [256, 256]
@@ -193,7 +193,7 @@ MODEL:
             FG_RATIO: 0.5
 
             SAMPLE_ROI_BY_EACH_CLASS: True
-            CLS_SCORE_TYPE: raw_roi_iou
+            CLS_SCORE_TYPE: roi_iou
 
             CLS_FG_THRESH: 0.75
             CLS_BG_THRESH: 0.25
@@ -228,78 +228,23 @@ MODEL:
             NMS_POST_MAXSIZE: 500
 
 
-SELF_TRAIN:
-    SRC:
-        USE_DATA: False
-        USE_GRAD: False
-        LOSS_WEIGHT: 1.0
-    TAR:
-        USE_DATA: True
-        LOSS_WEIGHT: 1.0
-
-    SCORE_THRESH: [0.5]
-    NEG_THRESH: [0.2]
-    UPDATE_PSEUDO_LABEL: [0]
-    UPDATE_PSEUDO_LABEL_INTERVAL: 2
-    INIT_PS: None
-
-    PROG_AUG:
-        ENABLED: True
-        UPDATE_AUG: [5, 10]
-        SCALE: 1.1
-
-    MEMORY_ENSEMBLE:
-        ENABLED: False
-        NAME: consistency_ensemble
-        IOU_THRESH: 0.1
-
-        NMS_CONFIG:
-            NMS_TYPE: nms_gpu
-            MULTI_CLASSES_NMS: False
-            NMS_PRE_MAXSIZE: 512
-            NMS_POST_MAXSIZE: 100
-            NMS_THRESH: 0.1
-
-        MEMORY_VOTING:
-            ENABLED: False
-            IGNORE_THRESH: 2
-            RM_THRESH: 3
-
-
 OPTIMIZATION:
-    NUM_EPOCHS: 20
-    BATCH_SIZE_PER_GPU: 6
+    BATCH_SIZE_PER_GPU: 2
+    NUM_EPOCHS: 80
+
     OPTIMIZER: adam_onecycle
-    LR: 0.001
-    WEIGHT_DECAY: 0.001
+    LR: 0.01
+    WEIGHT_DECAY: 0.01
     MOMENTUM: 0.9
 
     MOMS: [0.95, 0.85]
     PCT_START: 0.4
-    DIV_FACTOR: 20
-    DECAY_STEP_LIST: [10]
+    DIV_FACTOR: 10
+    DECAY_STEP_LIST: [35, 45]
     LR_DECAY: 0.1
     LR_CLIP: 0.0000001
-    
-
-    DISCRIMINATOR:
-        OPTIMIZER: adam
-        LR: 0.001
-        WEIGHT_DECAY: 0.
-        LR_CLIP: 0.0000001
-        LR_DECAY: 0.1
-        DECAY_STEP_LIST: [5]
-        LR_WARMUP: False
-        GRAD_NORM_CLIP: 10
 
     LR_WARMUP: False
     WARMUP_EPOCH: 1
 
     GRAD_NORM_CLIP: 10
-    TAR_LOSS_SCALE: 1.0
-
-    SAMPLE_LOSS_SCALE: 1.0
-
-
-ANNOTATION_BUDGET: 250
-SAMPLE_EPOCHS: [0, 4, 8, 12, 15]
