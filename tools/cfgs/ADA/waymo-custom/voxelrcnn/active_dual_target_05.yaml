@@ -1,9 +1,9 @@
-ADA_STAGE: SOURCE
+ADA_STAGE: TARGET
 CLASS_NAMES: ['Vehicle']
 
 DATA_CONFIG:
     _BASE_CONFIG_: cfgs/dataset_configs/waymo/ADA/ada_waymo_dataset_gt_D_v2.yaml
-    FILE_PATH: ../data/waymo/waymo_processed_data_v0_5_0
+    FILE_PATH: # PATH_TO_SAMPLED_DB
     INFO_WITH_FAKELIDAR: False
     DATA_AUGMENTOR:
         DISABLE_AUG_LIST: ['placeholder']
@@ -23,6 +23,7 @@ DATA_CONFIG:
 
 DATA_CONFIG_TAR:
     _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
+    FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
     TARGET: True
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
@@ -35,6 +36,32 @@ DATA_CONFIG_SAMPLE:
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
     SHIFT_COOR: [0.0, 0.0, 2.4]
+    DATA_AUGMENTOR:
+        DISABLE_AUG_LIST: ['placeholder']
+        AUG_CONFIG_LIST:
+            - NAME: gt_sampling
+              USE_ROAD_PLANE: True
+              DB_INFO_PATH:
+                  - kitti_dbinfos_train.pkl
+              PREPARE: {
+                 filter_by_min_points: ['Car:5'],
+                 filter_by_difficulty: [-1],
+              }
+
+              SAMPLE_GROUPS: ['Car:15']
+              NUM_POINT_FEATURES: 4
+              DATABASE_WITH_FAKELIDAR: False
+              REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
+              LIMIT_WHOLE_SCENE: False
+
+            - NAME: random_world_flip
+              ALONG_AXIS_LIST: ['x']
+
+            - NAME: random_world_rotation
+              WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
+
+            - NAME: random_world_scaling
+              WORLD_SCALE_RANGE: [0.95, 1.05]
 
 
 
@@ -196,7 +223,7 @@ MODEL:
 
 
 OPTIMIZATION:
-    NUM_EPOCHS: 15
+    NUM_EPOCHS: 40
     BATCH_SIZE_PER_GPU: 2
     OPTIMIZER: adam_onecycle
     LR: 0.001
@@ -206,7 +233,7 @@ OPTIMIZATION:
     MOMS: [0.95, 0.85]
     PCT_START: 0.4
     DIV_FACTOR: 10
-    DECAY_STEP_LIST: [5]
+    DECAY_STEP_LIST: [20]
     LR_DECAY: 0.1
     LR_CLIP: 0.0000001
     
@@ -229,5 +256,5 @@ OPTIMIZATION:
 
     SAMPLE_LOSS_SCALE: 1.0
 
-SOURCE_THRESHOD: 300
-SAMPLE_EPOCHS: [0]
+ANNOTATION_BUDGET: 37
+SAMPLE_EPOCHS: [0, 2, 4, 6, 8]
