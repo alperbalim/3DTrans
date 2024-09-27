@@ -22,8 +22,8 @@ DATA_CONFIG:
               WORLD_SCALE_RANGE: [ 0.95, 1.05 ]
 
 DATA_CONFIG_TAR:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
-    FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
+    _BASE_CONFIG_: cfgs/dataset_configs/awsim/ada_awsim_dataset_2.yaml
+    FILE_PATH: ../data/awsim_kitti2/custom_infos_train.pkl
     TARGET: True
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
@@ -31,7 +31,7 @@ DATA_CONFIG_TAR:
 
 
 DATA_CONFIG_SAMPLE:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/awsim/ada_awsim_dataset_2.yaml
     TARGET: True
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
