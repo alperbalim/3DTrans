@@ -2,7 +2,7 @@ ADA_STAGE: TARGET
 CLASS_NAMES: ['Vehicle']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/waymo/ADA/ada_waymo_dataset_gt_D.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/waymo/ADA/ada_waymo_dataset_gt_D_v2.yaml
     FILE_PATH: #../data/waymo/waymo_processed_data_v0_5_0_infos_train.pkl
     INFO_WITH_FAKELIDAR: False
     DATA_AUGMENTOR:
@@ -23,22 +23,22 @@ DATA_CONFIG:
 
 
 DATA_CONFIG_TAR:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
     FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
     TARGET: True
     FOV_POINTS_ONLY: False
     USE_PSEUDO_LABEL: True
     CLASS_NAMES: ['Car']
-    SHIFT_COOR: [0.0, 0.0, 1.6]
+    SHIFT_COOR: [0.0, 0.0, 2.4]
 
 
 DATA_CONFIG_SAMPLE:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
     FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
     TARGET: True
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
-    SHIFT_COOR: [0.0, 0.0, 1.6]
+    SHIFT_COOR: [0.0, 0.0, 2.4]
 
 
 
