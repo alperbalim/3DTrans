@@ -588,6 +588,7 @@ def train_active_with_st3d(model, optimizer, source_train_loader, target_train_l
 
         dataloader_iter_src = iter(source_train_loader)
         dataloader_iter_tar = iter(target_train_loader)
+        first_run = 0
         for cur_epoch in tbar:
             if source_sampler is not None:
                 source_sampler.set_epoch(cur_epoch)
@@ -609,7 +610,7 @@ def train_active_with_st3d(model, optimizer, source_train_loader, target_train_l
                 target_train_loader.dataset.train()
                 commu_utils.synchronize()
 
-            if cur_epoch in sample_epoch:
+            if cur_epoch in sample_epoch or first_run==0:
                 accumulated_iter_discriminator = train_discriminator(
                     model, 
                     optimizer[1],
@@ -626,7 +627,7 @@ def train_active_with_st3d(model, optimizer, source_train_loader, target_train_l
                 )
 
 
-            if cur_epoch in sample_epoch:
+            if cur_epoch in sample_epoch or first_run==0:
                 frame_score = active_learning_utils.active_evaluate_dual(model, target_train_loader, rank, domain='target')
                 sampled_frame_id, _ = active_learning_utils.active_sample_tar(frame_score, budget=annotation_budget, logger=logger)
                 sample_list, info_path = active_learning_utils.update_sample_list_dual(
@@ -662,6 +663,7 @@ def train_active_with_st3d(model, optimizer, source_train_loader, target_train_l
                 dataloader_iter_tar = iter(target_train_loader)
                 dataloader_iter_sample = iter(sample_train_loader) if sample_train_loader is not None else None
                 dataloader_iter_src_sample = iter(source_sample_loader)
+                first_run=1
                 
             # if cfg.SELF_TRAIN.get('PROG_AUG', None) and cfg.SELF_TRAIN.PROG_AUG.ENABLED and \
             #     (cur_epoch in cfg.SELF_TRAIN.PROG_AUG.UPDATE_AUG):
