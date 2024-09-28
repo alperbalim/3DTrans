@@ -233,7 +233,7 @@ def train_active_model_dual_tar(model, optimizer, source_train_loader, target_tr
     target_list = active_learning_utils.get_target_list(target_file_path, oss=oss)
     sample_list = []
     sample_train_loader = None
-
+    first_run=0
     with tqdm.trange(start_epoch, total_epochs, desc='epochs', dynamic_ncols=True, leave=(rank == 0)) as tbar:
         total_it_each_epoch = len(source_train_loader)
         if merge_all_iters_to_one_epoch:
@@ -253,7 +253,7 @@ def train_active_model_dual_tar(model, optimizer, source_train_loader, target_tr
             else:
                 cur_scheduler = lr_scheduler
 
-            if cur_epoch in sample_epoch:
+            if cur_epoch in sample_epoch or first_run==0:
                 accumulated_iter_discriminator = train_discriminator(
                     model, 
                     optimizer[1],
@@ -269,7 +269,7 @@ def train_active_model_dual_tar(model, optimizer, source_train_loader, target_tr
                     tb_log, rank, tbar
                 )
 
-            if cur_epoch in sample_epoch:
+            if cur_epoch in sample_epoch or first_run==0:
                 frame_score = active_learning_utils.active_evaluate_dual(model, target_train_loader, rank, domain='target')
                 sampled_frame_id, _ = active_learning_utils.active_sample_tar(frame_score, budget=annotation_budget, logger=logger)
                 sample_list, info_path = active_learning_utils.update_sample_list_dual(
@@ -304,6 +304,7 @@ def train_active_model_dual_tar(model, optimizer, source_train_loader, target_tr
                 dataloader_iter_tar = iter(target_train_loader)
                 dataloader_iter_sample = iter(sample_train_loader) if sample_train_loader is not None else None
                 dataloader_iter_src_sample = iter(source_sample_loader)
+                first_run=1
                 
             accumulated_iter_detector = train_detector(
                 model, 
