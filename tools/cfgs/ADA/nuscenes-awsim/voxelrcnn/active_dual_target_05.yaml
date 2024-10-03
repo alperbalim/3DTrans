@@ -1,41 +1,51 @@
+ADA_STAGE: TARGET
 CLASS_NAMES: ['car']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/DA/da_nuscenes_dataset_v2.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/ADA/ada_nuscenes_dataset_gt_D_v2.yaml
+    FILE_PATH: #PATH_TO_SAMPLED_DB
     MAX_SWEEPS: 1
     PRED_VELOCITY: False
     BALANCED_RESAMPLING: False
-    SHIFT_COOR: [0.0, 0.0, 1.8]
-
-DATA_CONFIG_TAR:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/da_custom_dataset_v2.yaml
-    TARGET: True
-    FOV_POINTS_ONLY: True
-    USE_PSEUDO_LABEL: True
-    CLASS_NAMES: ['Car']
-    SHIFT_COOR: [0.0, 0.0, 2.4]
+    SHIFT_COOR: [ 0.0, 0.0, 1.8 ]
 
     DATA_AUGMENTOR:
-        DISABLE_AUG_LIST: [ 'placeholder' ] # Although the target domain uses the random_object_scaling data augmentation, the method is only used for PSEUDO-LABELED DATA
+        DISABLE_AUG_LIST: ['placeholder']
         AUG_CONFIG_LIST:
-            - NAME: normalize_object_size
-              SIZE_RES: [ -0.71, -0.31, -0.2 ]
 
-            - NAME: random_object_rotation
-              ROT_PROB: 0.8
-              ROT_UNIFORM_NOISE: [ -0.38539816, 0.38539816 ]
+            - NAME: normalize_object_size
+              SIZE_RES: [ -0.75, -0.34, -0.2 ]
 
             - NAME: random_world_flip
               ALONG_AXIS_LIST: [ 'x', 'y' ]
 
             - NAME: random_world_rotation
-              WORLD_ROT_ANGLE: [ -0.78539816, 0.78539816 ]
+              WORLD_ROT_ANGLE: [ -0.3925, 0.3925 ]
 
             - NAME: random_world_scaling
-              WORLD_SCALE_RANGE: [ 0.97, 1.03 ]
+              WORLD_SCALE_RANGE: [ 0.95, 1.05 ]
+
+
+DATA_CONFIG_TAR:
+    _BASE_CONFIG_: cfgs/dataset_configs/awsim/ada_awsim_dataset_2.yaml
+    FILE_PATH: ../data/awsim_kitti2/custom_infos_train.pkl
+    TARGET: True
+    FOV_POINTS_ONLY: False
+    CLASS_NAMES: ['Car']
+    SHIFT_COOR: [0.0, 0.0, 2.4]
+
+
+DATA_CONFIG_SAMPLE:
+    _BASE_CONFIG_: cfgs/dataset_configs/awsim/ada_awsim_dataset_2.yaml
+    TARGET: True
+    FOV_POINTS_ONLY: False
+    CLASS_NAMES: ['Car']
+    SHIFT_COOR: [0.0, 0.0, 2.4]
+
+
 
 MODEL:
-    NAME: VoxelRCNN
+    NAME: ActiveDualVoxelRCNN
 
     VFE:
         NAME: DynMeanVFE
@@ -57,11 +67,10 @@ MODEL:
         NUM_UPSAMPLE_FILTERS: [256, 256]
 
     DENSE_HEAD:
-        NAME: CenterHead
+        NAME: ActiveCenterHead
         CLASS_AGNOSTIC: False
-
         CLASS_NAMES_EACH_HEAD: [
-            [ 'car', 'Car' ]
+            [ 'Car', 'car' ]
         ]
 
         SHARED_CONV_CHANNEL: 64
@@ -99,8 +108,12 @@ MODEL:
                 NMS_PRE_MAXSIZE: 4096
                 NMS_POST_MAXSIZE: 500
 
+    DISCRIMINATOR:
+        NAME: BEVDiscriminator_Center
+        FEATURE_DIM: 512
+
     ROI_HEAD:
-        NAME: VoxelRCNNHead
+        NAME: ActiveVoxelRCNNHead
         CLASS_AGNOSTIC: True
 
         SHARED_FC: [256, 256]
@@ -121,9 +134,6 @@ MODEL:
                 NMS_PRE_MAXSIZE: 1024
                 NMS_POST_MAXSIZE: 100
                 NMS_THRESH: 0.7
-                # NMS_PRE_MAXSIZE: 4096
-                # NMS_POST_MAXSIZE: 300
-                # NMS_THRESH: 0.85
 
         ROI_GRID_POOL:
             FEATURES_SOURCE: ['x_conv2', 'x_conv3', 'x_conv4']
@@ -190,22 +200,40 @@ MODEL:
             NMS_POST_MAXSIZE: 500
 
 
+
 OPTIMIZATION:
-    NUM_EPOCHS: 30
-    BATCH_SIZE_PER_GPU: 7
+    NUM_EPOCHS: 50
+    BATCH_SIZE_PER_GPU: 4
     OPTIMIZER: adam_onecycle
-    LR: 0.01
+    LR: 0.0005
     WEIGHT_DECAY: 0.001
     MOMENTUM: 0.9
 
     MOMS: [0.95, 0.85]
     PCT_START: 0.4
     DIV_FACTOR: 10
-    DECAY_STEP_LIST: [35, 45]
+    DECAY_STEP_LIST: [15]
     LR_DECAY: 0.1
     LR_CLIP: 0.0000001
+    
+
+    DISCRIMINATOR:
+        OPTIMIZER: adam
+        LR: 0.0005
+        WEIGHT_DECAY: 0.
+        LR_CLIP: 0.0000001
+        LR_DECAY: 0.1
+        DECAY_STEP_LIST: [5]
+        LR_WARMUP: False
+        GRAD_NORM_CLIP: 10
 
     LR_WARMUP: False
     WARMUP_EPOCH: 1
 
     GRAD_NORM_CLIP: 10
+    TAR_LOSS_SCALE: 1.0
+
+    SAMPLE_LOSS_SCALE: 1.0
+
+ANNOTATION_BUDGET: 250
+SAMPLE_EPOCHS: [0, 1, 2, 3, 4]
