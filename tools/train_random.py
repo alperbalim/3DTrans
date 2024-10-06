@@ -113,8 +113,8 @@ def main():
     tb_log = SummaryWriter(log_dir=str(output_dir / 'tensorboard')) if cfg.LOCAL_RANK == 0 else None
 
     # -----------------------create dataloader & network & optimizer---------------------------
-    source_list = active_learning_utils.get_dataset_list(cfg['DATA_CONFIG']['FILE_PATH'], oss=True)
-    target_list = active_learning_utils.get_dataset_list(cfg['DATA_CONFIG_TAR']['FILE_PATH'], oss=True)
+    source_list = active_learning_utils.get_dataset_list(cfg['DATA_CONFIG']['FILE_PATH'], oss=False)
+    target_list = active_learning_utils.get_dataset_list(cfg['DATA_CONFIG_TAR']['FILE_PATH'], oss=False)
     sample_source_path, sample_target_path = active_learning_utils.random_sample(source_list, target_list, cfg['SOURCE_BUDGET'], cfg['ANNOTATION_BUDGET'], target_list_dir)
     
     source_set, source_loader, source_sampler = build_dataloader_ada(

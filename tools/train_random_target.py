@@ -113,7 +113,7 @@ def main():
     tb_log = SummaryWriter(log_dir=str(output_dir / 'tensorboard')) if cfg.LOCAL_RANK == 0 else None
 
     # -----------------------create dataloader & network & optimizer---------------------------
-    target_list = active_learning_utils.get_dataset_list(cfg['DATA_CONFIG']['FILE_PATH'], oss=True)
+    target_list = active_learning_utils.get_dataset_list(cfg['DATA_CONFIG']['FILE_PATH'], oss=False)
     sample_target_path = active_learning_utils.random_sample_target(target_list, cfg['ANNOTATION_BUDGET'], target_list_dir)
 
 
