@@ -2,6 +2,7 @@ CLASS_NAMES: ['Vehicle']
 
 DATA_CONFIG:
     _BASE_CONFIG_: cfgs/dataset_configs/waymo/ADA/ada_waymo_dataset_gt_D_v2.yaml
+    FILE_PATH: #PATH_TO_SAMPLED_DB
     INFO_WITH_FAKELIDAR: False
     DATA_AUGMENTOR:
         DISABLE_AUG_LIST: ['placeholder']
