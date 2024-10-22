@@ -40,4 +40,4 @@ n=1; while [[ $n -lt 15 ]]; do python test.py --cfg_file ./cfgs/ADA/waymo-custom
 
 
 
-n=1; while [[ $n -lt 15 ]]; do python test.py --cfg_file ./cfgs/ADA/waymo-custom/active_CLUE_2.yaml --ckpt /root/3DTrans/output/cfgs/ADA/waymo-custom/active_CLUE_2/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+n=1; while [[ $n -lt 15 ]]; do python test.py --cfg_file ./cfgs/ADA/waymo-custom/voxelrcnn/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/waymo-custom/voxelrcnn/active_CLUE/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
