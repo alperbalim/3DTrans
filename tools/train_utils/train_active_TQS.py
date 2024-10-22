@@ -406,7 +406,7 @@ def train_active_model_target(model, optimizer, source_train_loader, target_trai
     accumulated_iter_detector, accumulated_iter_mul_cls, accumulated_iter_discriminator = start_iter, start_iter, start_iter
     source_reader = common_utils.DataReader(source_train_loader, source_sampler)
     source_reader.construct_iter()
-    
+    first_run=0
     with tqdm.trange(start_epoch, total_epochs, desc='epochs', dynamic_ncols=True,
                      leave=(rank == 0)) as tbar:
         if merge_all_iters_to_one_epoch:
@@ -430,7 +430,7 @@ def train_active_model_target(model, optimizer, source_train_loader, target_trai
             else:
                 cur_scheduler = lr_scheduler
 
-            if cur_epoch in sample_epoch:
+            if cur_epoch in sample_epoch or first_run==0:
                 accumulated_iter_discriminator = train_discriminator(
                     model, 
                     optimizer[1],
@@ -465,7 +465,7 @@ def train_active_model_target(model, optimizer, source_train_loader, target_trai
 
 
             # active evaluate and sample
-            if cur_epoch in sample_epoch:
+            if cur_epoch in sample_epoch or first_run==0:
                 # sample from target_domain
                 frame_score = active_learning_2D_utils.active_evaluate_dual(model, target_train_loader, rank, domain='target')
                 sampled_frame_id, _ = active_learning_2D_utils.active_sample(frame_score, budget=annotation_budget)
@@ -501,6 +501,7 @@ def train_active_model_target(model, optimizer, source_train_loader, target_trai
                 dataloader_iter_tar = iter(target_train_loader)
                 dataloader_iter_sample = iter(sample_train_loader) if sample_train_loader is not None else None
                 dataloader_iter_src_sample = iter(sample_loader)
+                first_run=1
                 
             accumulated_iter_detector = train_detector(
                 model, 
