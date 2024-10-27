@@ -123,7 +123,7 @@ def train_active_model_target(model, optimizer, source_train_loader, target_trai
     accumulated_iter_detector = start_iter
     source_reader = common_utils.DataReader(source_train_loader, source_sampler)
     source_reader.construct_iter()
-    
+    first_run = 0
     with tqdm.trange(start_epoch, total_epochs, desc='epochs', dynamic_ncols=True,
                      leave=(rank == 0)) as tbar:
         if merge_all_iters_to_one_epoch:
@@ -149,7 +149,7 @@ def train_active_model_target(model, optimizer, source_train_loader, target_trai
 
 
             # active evaluate and sample
-            if cur_epoch in sample_epoch:
+            if cur_epoch in sample_epoch or first_run==0:
                 # sample from target_domain
                 frame_score = active_learning_2D_utils.active_evaluate_dual(model, target_train_loader, rank, domain='target')
                 sampled_frame_id, _ = active_learning_2D_utils.active_sample_CLUE(frame_score, budget=annotation_budget)

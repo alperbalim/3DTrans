@@ -1,8 +1,8 @@
 CLASS_NAMES: ['car']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/ADA/ada_nuscenes_dataset_gt_D.yaml
-    FILE_PATH: ../data/nuscenes/v1.0-trainval/nuscenes_infos_10sweeps_train.pkl
+    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/ADA/ada_nuscenes_dataset_gt_D_v2.yaml
+    FILE_PATH: #
     MAX_SWEEPS: 1
     PRED_VELOCITY: False
     BALANCED_RESAMPLING: False
@@ -26,7 +26,7 @@ DATA_CONFIG:
 
 
 DATA_CONFIG_TAR:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
     FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
     TARGET: True
     FOV_POINTS_ONLY: False
@@ -35,7 +35,7 @@ DATA_CONFIG_TAR:
 
 
 DATA_CONFIG_SAMPLE:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
     TARGET: True
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
@@ -223,10 +223,10 @@ MODEL:
 
 
 OPTIMIZATION:
-    NUM_EPOCHS: 40
+    NUM_EPOCHS: 20
     BATCH_SIZE_PER_GPU: 2
     OPTIMIZER: adam_onecycle
-    LR: 0.01
+    LR: 0.001
     WEIGHT_DECAY: 0.001
     MOMENTUM: 0.9
 
@@ -245,5 +245,5 @@ OPTIMIZATION:
 
     SAMPLE_LOSS_SCALE: 1.0
 
-ANNOTATION_BUDGET: 125
-SAMPLE_EPOCHS: [0,40]
+ANNOTATION_BUDGET: 250
+SAMPLE_EPOCHS: [2,40]
