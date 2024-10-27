@@ -1,50 +1,14 @@
-CLASS_NAMES: ['car']
+CLASS_NAMES: ['Car']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/ADA/ada_nuscenes_dataset_gt_D_v2.yaml
-    FILE_PATH: #
-    MAX_SWEEPS: 1
-    PRED_VELOCITY: False
-    BALANCED_RESAMPLING: False
-    SHIFT_COOR: [ 0.0, 0.0, 1.8 ]
-
-    DATA_AUGMENTOR:
-        DISABLE_AUG_LIST: ['placeholder']
-        AUG_CONFIG_LIST:
-
-            - NAME: normalize_object_size
-              SIZE_RES: [ -0.75, -0.34, -0.2 ]
-
-            - NAME: random_world_flip
-              ALONG_AXIS_LIST: [ 'x', 'y' ]
-
-            - NAME: random_world_rotation
-              WORLD_ROT_ANGLE: [ -0.3925, 0.3925 ]
-
-            - NAME: random_world_scaling
-              WORLD_SCALE_RANGE: [ 0.95, 1.05 ]
-
-
-DATA_CONFIG_TAR:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
-    FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
-    TARGET: True
+    _BASE_CONFIG_: ./cfgs/dataset_configs/custom/da_custom_dataset_v2.yaml
     FOV_POINTS_ONLY: False
     CLASS_NAMES: ['Car']
     SHIFT_COOR: [0.0, 0.0, 2.4]
-
-
-DATA_CONFIG_SAMPLE:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/ada_custom_dataset_2.yaml
-    TARGET: True
-    FOV_POINTS_ONLY: False
-    CLASS_NAMES: ['Car']
-    SHIFT_COOR: [0.0, 0.0, 2.4]
-
-
+    RANDOM_SAMPLE_ID_PATH: cfgs/SSDA/waymo_custom/trainids.npy
 
 MODEL:
-    NAME: PVRCNN_CLUE
+    NAME: PVRCNN
 
     VFE:
         NAME: MeanVFE
@@ -69,7 +33,6 @@ MODEL:
         NAME: AnchorHeadSingle
         CLASS_AGNOSTIC: False
 
-        MARGIN_SCALE: 1.0
         USE_DIRECTION_CLASSIFIER: True
         DIR_OFFSET: 0.78539
         DIR_LIMIT_OFFSET: 0.0
@@ -77,7 +40,7 @@ MODEL:
 
         ANCHOR_GENERATOR_CONFIG: [
             {
-                'class_name': 'car',
+                'class_name': 'Car',
                 'anchor_sizes': [[4.2, 2.0, 1.6]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0],
@@ -152,7 +115,7 @@ MODEL:
             }
 
     ROI_HEAD:
-        NAME: ActivePVRCNNHead
+        NAME: PVRCNNHead
         CLASS_AGNOSTIC: True
 
         SHARED_FC: [256, 256]
@@ -223,8 +186,8 @@ MODEL:
 
 
 OPTIMIZATION:
-    NUM_EPOCHS: 20
-    BATCH_SIZE_PER_GPU: 2
+    NUM_EPOCHS: 30
+    BATCH_SIZE_PER_GPU: 4
     OPTIMIZER: adam_onecycle
     LR: 0.01
     WEIGHT_DECAY: 0.001
@@ -233,7 +196,7 @@ OPTIMIZATION:
     MOMS: [0.95, 0.85]
     PCT_START: 0.4
     DIV_FACTOR: 10
-    DECAY_STEP_LIST: [15]
+    DECAY_STEP_LIST: [35, 45]
     LR_DECAY: 0.1
     LR_CLIP: 0.0000001
 
@@ -241,9 +204,3 @@ OPTIMIZATION:
     WARMUP_EPOCH: 1
 
     GRAD_NORM_CLIP: 10
-    TAR_LOSS_SCALE: 1.0
-
-    SAMPLE_LOSS_SCALE: 1.0
-
-ANNOTATION_BUDGET: 250
-SAMPLE_EPOCHS: [2,40]
