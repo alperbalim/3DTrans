@@ -1,0 +1,91 @@
+# CLUE
+## nuScenes-Custom - PVRCNN
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-custom/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/DA/nusc_custom/pvrcnn_old_anchor_sn_kitti/default/ckpt/checkpoint_epoch_30.pth --batch_size 4 ; n=$((n+1)); done
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-custom/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_CLUE/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+
+## nuScenes-Custom - PVRCNN v2
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-custom/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_source/default/ckpt/checkpoint_epoch_15.pth --batch_size 4 --extra_tag v2; n=$((n+1)); done
+
+n=8; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-custom/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_CLUE/v2/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## nuScenes-Custom - PVRCNN v3
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-custom/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_source/default/ckpt/checkpoint_epoch_15.pth --batch_size 4 --extra_tag v3; n=$((n+1)); done
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-custom/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_CLUE/v3/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## nuScenes-Custom - VoxelRCNN
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/DA/nusc_custom/voxelrcnn/voxel_rcnn_feat_3_vehi/default/ckpt/checkpoint_epoch_16.pth --batch_size 4; n=$((n+1)); done
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+
+### nuScenes-Custom - VoxelRCNN v2
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_source/default/ckpt/checkpoint_epoch_15.pth --batch_size 4 --extra_tag v2; n=$((n+1)); done
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE/v2/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 --extra_tag v2; n=$((n+1)); done
+
+### nuScenes-Custom - VoxelRCNN v3
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE/v2/ckpt/checkpoint_epoch_15.pth --batch_size 4 --extra_tag v3; n=$((n+1)); done
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE/v3/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 --extra_tag v3; n=$((n+1)); done
+
+
+
+
+## nuScenes-Awsim - PVRCNN
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-awsim/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_source/default/ckpt/checkpoint_epoch_15.pth --batch_size 4 ; n=$((n+1)); done
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-awsim/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-awsim/active_CLUE/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## nuScenes-Awsim - VoxelRCNN
+n=1; while [[ $n -lt 10 ]]; do bash scripts/ADA/dist_train_active_CLUE.sh 2 --cfg_file ./cfgs/ADA/nuscenes-awsim/voxelrcnn/active_CLUE.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_source/default/ckpt/checkpoint_epoch_1.pth --batch_size 4 ; n=$((n+1)); done
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/ADA/nuscenes-awsim/voxelrcnn/active_CLUE.yaml --ckpt /root/3DTrans/output/cfgs/ADA/nuscenes-awsim/voxelrcnn/active_CLUE/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+
+# SSDA
+## WAYMO-Custom - PVRCNN
+bash scripts/dist_train.sh 2 --cfg_file ./cfgs/SSDA/waymo_custom/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/waymo-custom/pvrcnn_old_anchor/default/ckpt/checkpoint_epoch_15.pth
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/SSDA/waymo_custom/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/waymo_custom/pvrcnn/pvrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## WAYMO-Custom - VOXELRCNN
+bash scripts/dist_train.sh 2 --cfg_file ./cfgs/SSDA/waymo_custom/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/DA/waymo_custom/voxel_rcnn_sn_custom/default/ckpt/checkpoint_epoch_2.pth
+
+n=15; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/SSDA/waymo_custom/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/waymo_custom/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1; n=$((n+1)); done
+
+
+
+## WAYMO-AWSIM - PVRCNN
+bash scripts/dist_train.sh 2 --cfg_file ./cfgs/SSDA/waymo_awsim/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/waymo-custom/pvrcnn_old_anchor/default/ckpt/checkpoint_epoch_15.pth
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/SSDA/waymo_awsim/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/waymo_awsim/pvrcnn/pvrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## WAYMO-AWSIM - VOXELRCNN
+bash scripts/dist_train.sh 1 --cfg_file ./cfgs/SSDA/waymo_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/DA/waymo-awsim/voxel_rcnn_sn_custom/default/ckpt/checkpoint_epoch_2.pth --batch_size 1
+
+n=1; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/SSDA/waymo_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/waymo_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1; n=$((n+1)); done
+
+
+# SSDA
+## NUSCENES-Custom - PVRCNN
+bash scripts/dist_train.sh 2 --cfg_file ./cfgs/SSDA/nuscenes_custom/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/DA/nusc_custom/pvrcnn_old_anchor_sn_kitti/default/ckpt/checkpoint_epoch_30.pth --batch_size 10
+
+n=1; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/SSDA/nuscenes_custom/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/nuscenes_custom/pvrcnn/pvrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## NUSCENES-Custom - VOXELRCNN
+bash scripts/dist_train.sh 1 --cfg_file ./cfgs/SSDA/nuscenes_custom/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_CLUE/v2/ckpt/checkpoint_epoch_15.pth --batch_size 2
+
+n=1; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/SSDA/nuscenes_custom/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/nuscenes_custom/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1; n=$((n+1)); done
+
+## NUSCENES-AWSIM - PVRCNN
+bash scripts/dist_train.sh 2 --cfg_file ./cfgs/SSDA/nuscenes_awsim/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/active_source/default/ckpt/checkpoint_epoch_15.pth --batch_size 10
+
+n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/SSDA/nuscenes_awsim/pvrcnn/pvrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/nuscenes_awsim/pvrcnn/pvrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## NUSCENES-AWSIM - VOXELRCNN	
+bash scripts/dist_train.sh 2 --cfg_file ./cfgs/SSDA/nuscenes_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_source/default/ckpt/checkpoint_epoch_1.pth --batch_size 10
+
+n=16; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/SSDA/nuscenes_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/nuscenes_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
