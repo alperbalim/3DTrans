@@ -1,20 +1,20 @@
 CLASS_NAMES: ['Car']
 
 USE_PRETRAIN_MODEL: True
-PRETRAIN_CKPT: ../output/cfgs/SSDA/waymo_custom/pvrcnn/pvrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_22.pth
+PRETRAIN_CKPT: ../output/kitti_models/pvrcnn_feat_3_vehi_1%/default/ckpt/checkpoint_epoch_11.pth
 
 
 DATA_CONFIG: 
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/SEMI/custom_semi_dataset.yaml
-    SHIFT_COOR: [0.0, 0.0, 2.4]
+    _BASE_CONFIG_: cfgs/dataset_configs/kitti/SEMI/kitti_semi_dataset.yaml
     FOV_POINTS_ONLY: False
-    
-    LABELED_DATA_FOR: ['teacher', 'student']
+    SHIFT_COOR: [0.0, 0.0, 1.6]
+
+    LABELED_DATA_FOR: ['student']
     UNLABELED_DATA_FOR: ['teacher', 'student']
-    RANDOM_SAMPLE_ID_PATH: cfgs/SSDA/waymo_custom/trainids.npy
+    RANDOM_SAMPLE_ID_PATH: cfgs/SSDA/waymo_kitti/kitti_1%_id_seed2022.npy
     DATA_SPLIT: {
       'train': train,
-      'test': test
+      'test': val
     }
 
     TEACHER_AUGMENTOR:
@@ -54,7 +54,7 @@ OPTIMIZATION:
         GRAD_NORM_CLIP: 10
 
     SEMI_SUP_LEARNING:
-        NAME: SESS
+        NAME: Pseudo-Label
         LD_BATCH_SIZE_PER_GPU: 1
         UD_BATCH_SIZE_PER_GPU: 4
         NUM_EPOCHS: 25
@@ -69,8 +69,8 @@ OPTIMIZATION:
                 NMS_PRE_MAXSIZE: 4096
                 NMS_POST_MAXSIZE: 500
 
-        FILTER_BY_SCORE_THRESHOLD: False
-        #SCORE_THRESHOLD: 0.1
+        FILTER_BY_SCORE_THRESHOLD: True
+        SCORE_THRESHOLD: 0.3
         FILTER_BY_TOPK: False
         #TOPK: 128
 
