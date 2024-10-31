@@ -17,6 +17,8 @@ from .lyft.lyft_dataset import LyftDataset
 from .lyft.lyft_dataset_ada import ActiveLyftDataset
 from .custom.custom_dataset import CustomDataset
 from .custom.custom_dataset_ada import ActiveCustomDataset
+from .custom.custom_semi_dataset import CustomPretrainDataset, CustomLabeledDataset, CustomUnlabeledDataset, CustomTestDataset, split_custom_semi_data
+
 
 from .once.once_dataset import ONCEDataset
 from .once.once_dataset_ada import ActiveONCEDataset
@@ -66,6 +68,13 @@ _semi_dataset_dict = {
         'LABELED': KittiLabeledDataset,
         'UNLABELED': KittiUnlabeledDataset,
         'TEST': KittiTestDataset
+    },
+    'CustomDataset': {
+        'PARTITION_FUNC': split_custom_semi_data,
+        'PRETRAIN': CustomPretrainDataset,
+        'LABELED': CustomLabeledDataset,
+        'UNLABELED': CustomUnlabeledDataset,
+        'TEST': CustomTestDataset
     }
 }
 
