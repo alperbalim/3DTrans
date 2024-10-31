@@ -89,3 +89,25 @@ n=1; while [[ $n -lt 16 ]]; do python test.py --cfg_file ./cfgs/SSDA/nuscenes_aw
 bash scripts/dist_train.sh 2 --cfg_file ./cfgs/SSDA/nuscenes_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/nuscenes-custom/voxel_rcnn/active_source/default/ckpt/checkpoint_epoch_1.pth --batch_size 10
 
 n=16; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/SSDA/nuscenes_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune.yaml --ckpt /root/3DTrans/output/cfgs/SSDA/nuscenes_awsim/voxelrcnn/voxelrcnn_feat_3_vehi_01_finetune/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+
+# UDA
+## WAYMO-CUSTOM VOXELRCNN
+bash scripts/UDA/dist_train_uda.sh 2 --cfg_file ./cfgs/DA/waymo_custom/UDA/voxel_rcnn_pre_SN_feat_3.yaml --pretrained_model /root/3DTrans/output/cfgs/DA/waymo_custom/voxel_rcnn_sn_custom/default/ckpt/checkpoint_epoch_2.pth --batch_size 10
+
+n=1; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/DA/waymo_custom/UDA/voxel_rcnn_pre_SN_feat_3.yaml --ckpt /root/3DTrans/output/cfgs/DA/waymo_custom/UDA/voxel_rcnn_pre_SN_feat_3/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## WAYMO-CUSTOM PVRCNN
+bash scripts/UDA/dist_train_uda.sh 2 --cfg_file ./cfgs/DA/waymo_custom/UDA/pvrcnn_post_SN_feat_3.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/waymo-custom/pvrcnn_old_anchor/default/ckpt/checkpoint_epoch_15.pth --batch_size 10
+
+n=1; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/DA/waymo_custom/UDA/pvrcnn_post_SN_feat_3.yaml --ckpt /root/3DTrans/output/cfgs/DA/waymo_custom/UDA/voxel_rcnn_pre_SN_feat_3/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## WAYMO-AWSIM VOXELRCNN
+bash scripts/UDA/dist_train_uda.sh 2 --cfg_file ./cfgs/DA/waymo-awsim/UDA/voxel_rcnn_pre_SN_feat_3.yaml --pretrained_model /root/3DTrans/output/cfgs/DA/waymo-awsim/voxel_rcnn_sn_custom/default/ckpt/checkpoint_epoch_2.pth --batch_size 8
+
+n=1; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/DA/waymo-awsim/UDA/voxel_rcnn_pre_SN_feat_3.yaml --ckpt /root/3DTrans/output/cfgs/DA/waymo-awsim/UDA/voxel_rcnn_pre_SN_feat_3/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
+
+## WAYMO-AWSIM PVRCNN
+bash scripts/UDA/dist_train_uda.sh 2 --cfg_file ./cfgs/DA/waymo-awsim/UDA/pvrcnn_pre_SN_feat_3.yaml --pretrained_model /root/3DTrans/output/cfgs/ADA/waymo-custom/pvrcnn_old_anchor/default/ckpt/checkpoint_epoch_15.pth --batch_size 8
+
+n=1; while [[ $n -lt 31 ]]; do python test.py --cfg_file ./cfgs/DA/waymo-custom/UDA/pvrcnn_post_SN_feat_3.yaml --ckpt /root/3DTrans/output/cfgs/DA/waymo_custom/UDA/voxel_rcnn_pre_SN_feat_3/default/ckpt/checkpoint_epoch_${n}.pth --batch_size 1 ; n=$((n+1)); done
