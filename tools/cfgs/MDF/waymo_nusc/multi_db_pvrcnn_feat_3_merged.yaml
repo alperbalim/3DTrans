@@ -1,10 +1,10 @@
 CLASS_NAMES: ['Vehicle', 'Pedestrian', 'Cyclist']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml
 
 DATA_CONFIG_SRC_2:
-    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/MDF/da_nuscenes_dataset_gt_D_p.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/MDF/da_nuscenes_dataset_gt_D_p_2.yaml
     CLASS_NAMES: ['car', 'pedestrian', 'bicycle']
     MAX_SWEEPS: 10
     PRED_VELOCITY: False
@@ -73,7 +73,7 @@ MODEL:
 
         POST_PROCESSING:
             SCORE_THRESH: 0.1
-            POST_CENTER_LIMIT_RANGE: [ -75.2, -75.2, -2, 75.2, 75.2, 4 ]
+            POST_CENTER_LIMIT_RANGE: [-47, -47, -4, 47, 47, 4]
             MAX_OBJ_PER_SAMPLE: 500
             NMS_CONFIG:
                 NMS_TYPE: nms_gpu

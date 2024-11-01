@@ -1,7 +1,7 @@
 CLASS_NAMES: ['Vehicle', 'Pedestrian', 'Cyclist']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml
 
     DATA_PROCESSOR:
         -   NAME: mask_points_and_boxes_outside_range
@@ -15,54 +15,11 @@ DATA_CONFIG:
             }
 
         -   NAME: transform_points_to_voxels_placeholder
-            VOXEL_SIZE: [ 0.10, 0.10, 0.10 ]
-            
+            VOXEL_SIZE: [0.0625, 0.0625, 0.2]
+
+
 DATA_CONFIG_SRC_2:
-    _BASE_CONFIG_: cfgs/dataset_configs/kitti/MDF/da_kitti_dataset_gt_D_p.yaml
-    CLASS_NAMES: ['Car', 'Pedestrian', 'Cyclist']
-    
-    DATA_AUGMENTOR:
-        DISABLE_AUG_LIST: ['placeholder']
-        AUG_CONFIG_LIST:
-            - NAME: gt_sampling
-              USE_ROAD_PLANE: True
-              DB_INFO_PATH:
-                  - kitti_dbinfos_train.pkl
-              PREPARE: {
-                 filter_by_min_points: ['Car:5', 'Pedestrian:5', 'Cyclist:5'],
-                 filter_by_difficulty: [-1],
-              }
-
-              SAMPLE_GROUPS: ['Car:15','Pedestrian:10', 'Cyclist:10']
-              NUM_POINT_FEATURES: 4
-              DATABASE_WITH_FAKELIDAR: False
-              REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
-              LIMIT_WHOLE_SCENE: False
-
-            - NAME: random_world_flip
-              ALONG_AXIS_LIST: ['x']
-
-            - NAME: random_world_rotation
-              WORLD_ROT_ANGLE: [-0.78539816, 0.78539816]
-
-            - NAME: random_world_scaling
-              WORLD_SCALE_RANGE: [0.95, 1.05]
-    DATA_PROCESSOR:
-        -   NAME: mask_points_and_boxes_outside_range
-            REMOVE_OUTSIDE_BOXES: True
-            STRICT_MASK: True
-
-        -   NAME: shuffle_points
-            SHUFFLE_ENABLED: {
-                'train': True,
-                'test': True
-            }
-
-        -   NAME: transform_points_to_voxels_placeholder
-            VOXEL_SIZE: [ 0.10, 0.10, 0.10 ]
-
-DATA_CONFIG_SRC_3:
-    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/MDF/da_nuscenes_dataset_gt_D_p.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/MDF/da_nuscenes_dataset_gt_D_p_2.yaml
 
     CLASS_NAMES: ['car', 'pedestrian', 'bicycle']
     MAX_SWEEPS: 10
@@ -81,7 +38,7 @@ DATA_CONFIG_SRC_3:
             }
 
         -   NAME: transform_points_to_voxels_placeholder
-            VOXEL_SIZE: [ 0.10, 0.10, 0.10 ]
+            VOXEL_SIZE: [0.0625, 0.0625, 0.2]
 
 MODEL:
     NAME: PVRCNNPlusPlus_M_DB_3
