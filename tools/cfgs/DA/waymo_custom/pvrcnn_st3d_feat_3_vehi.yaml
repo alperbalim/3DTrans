@@ -6,6 +6,7 @@ DATA_CONFIG:
 
 DATA_CONFIG_TAR:
     _BASE_CONFIG_: cfgs/dataset_configs/custom/da_custom_dataset_v2.yaml
+    FILE_PATH: ../data/custom_kitti2/custom_infos_train.pkl
     TARGET: True
     FOV_POINTS_ONLY: False
     USE_PSEUDO_LABEL: True
