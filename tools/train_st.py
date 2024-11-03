@@ -217,15 +217,15 @@ def main():
         test_set, test_loader, sampler = build_dataloader(
             dataset_cfg=cfg.DATA_CONFIG_TAR,
             class_names=cfg.DATA_CONFIG_TAR.CLASS_NAMES,
-            batch_size=args.batch_size,
-            dist=dist_train, workers=args.workers, logger=logger, training=False
+            batch_size=1,
+            dist=False, workers=args.workers, logger=logger, training=False
         )
     else:
         test_set, test_loader, sampler = build_dataloader(
             dataset_cfg=cfg.DATA_CONFIG,
             class_names=cfg.CLASS_NAMES,
             batch_size=args.batch_size,
-            dist=dist_train, workers=args.workers, logger=logger, training=False
+            dist=False, workers=args.workers, logger=logger, training=False
         )
 
     eval_output_dir = output_dir / 'eval' / 'eval_with_train'
@@ -236,7 +236,7 @@ def main():
     repeat_eval_ckpt(
         model.module if dist_train else model,
         test_loader, args, eval_output_dir, logger, ckpt_dir,
-        dist_test=dist_train
+        dist_test=False
     )
     logger.info('**********************End evaluation %s/%s(%s)**********************' %
                 (cfg.EXP_GROUP_PATH, cfg.TAG, args.extra_tag))
