@@ -3,6 +3,7 @@ CLASS_NAMES: ['Vehicle']
 DATA_CONFIG:
     _BASE_CONFIG_: cfgs/dataset_configs/waymo/DA/da_waymo_dataset_v2.yaml
     INFO_WITH_FAKELIDAR: False
+    FILE_PATH: #../data/waymo/waymo_processed_data_v0_5_0_infos_train.pkl
 
 DATA_CONFIG_TAR:
     _BASE_CONFIG_: cfgs/dataset_configs/custom/da_custom_dataset_v2.yaml
