@@ -1,16 +1,22 @@
-DATASET: 'KittiCustomDataset'
-DATA_PATH: '../data/awsim'
+DATASET: 'CustomDataset'
+DATA_PATH: '../data/awsim_kitti2'
 
-POINT_CLOUD_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
+POINT_CLOUD_RANGE: [-47, -47, -4, 47, 47, 4]
+MAP_CLASS_TO_KITTI: {
+    'Car': 'Car',
+    'Pedestrian': 'Pedestrian',
+    'Cyclist': 'Cyclist',
+}
+
 
 DATA_SPLIT: {
     'train': train,
-    'test': val
+    'test': test
 }
 
 INFO_PATH: {
-    'train': [kitti_infos_train.pkl],
-    'test': [kitti_infos_val.pkl],
+    'train': [custom_infos_train.pkl],
+    'test': [custom_infos_test.pkl],
 }
 
 
@@ -25,7 +31,7 @@ DATA_AUGMENTOR:
           DB_INFO_PATH:
               - kitti_dbinfos_train.pkl
           PREPARE: {
-             filter_by_min_points: ['Car:5', 'Pedestrian:5', 'Cyclist:5'],
+             filter_by_min_points: ['Car:10', 'Pedestrian:10', 'Cyclist:10'],
           }
 
           SAMPLE_GROUPS: ['Car:20', 'Pedestrian:15', 'Cyclist:15']
@@ -61,16 +67,16 @@ DATA_PROCESSOR:
       }
 
     - NAME: transform_points_to_voxels
-      VOXEL_SIZE: [0.1, 0.1, 0.15]
+      VOXEL_SIZE: [0.0625, 0.0625, 0.2]
       MAX_POINTS_PER_VOXEL: 5
       MAX_NUMBER_OF_VOXELS: {
-        'train': 80000,
-        'test': 90000
+        'train': 150000,
+        'test': 150000
       }
 
 TEST:
     BOX_FILTER: {
         'USE_IMAGE_AREA_FILTER': True,
         'FOV_FILTER': True,
-        'LIMIT_RANGE': [-75.2, -75.2, -2, 75.2, 75.2, 4]
+        'LIMIT_RANGE': [-47, -47, -4, 47, 47, 4]
     }

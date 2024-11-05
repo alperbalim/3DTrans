@@ -265,6 +265,64 @@ class NuScenesDataset(DatasetTemplate):
 
         return annos
 
+
+    def transform_to_kitti_format(self, info_with_fakelidar=False, is_gt=False):
+        self.annos_kitti =[]
+        
+        map_name_to_kitti = {
+            'car': 'Car',
+            'pedestrian': 'Pedestrian',
+            'truck': 'Truck',
+            'bicycle': 'Cyclist',
+        }
+        for anno in self.infos:
+            if 'name' not in anno:
+                anno['name'] = anno['gt_names']
+                anno.pop('gt_names')
+
+            for k in range(anno['name'].shape[0]):
+                if anno['name'][k] in map_name_to_kitti:
+                    anno['name'][k] = map_name_to_kitti[anno['name'][k]]
+                else:
+                    anno['name'][k] = 'Person_sitting'
+
+            if 'boxes_lidar' in anno:
+                gt_boxes_lidar = anno['boxes_lidar'].copy()
+            else:
+                gt_boxes_lidar = anno['gt_boxes'].copy()
+
+            # filter by fov
+            if is_gt and self.dataset_cfg.get('GT_FILTER', None):
+                if self.dataset_cfg.GT_FILTER.get('FOV_FILTER', None):
+                    fov_gt_flag = self.extract_fov_gt(
+                        gt_boxes_lidar, self.dataset_cfg['FOV_DEGREE'], self.dataset_cfg['FOV_ANGLE']
+                    )
+                    gt_boxes_lidar = gt_boxes_lidar[fov_gt_flag]
+                    anno['name'] = anno['name'][fov_gt_flag]
+
+            anno['bbox'] = np.zeros((len(anno['name']), 4))
+            anno['bbox'][:, 2:4] = 50  # [0, 0, 50, 50]
+            anno['truncated'] = np.zeros(len(anno['name']))
+            anno['occluded'] = np.zeros(len(anno['name']))
+
+            if len(gt_boxes_lidar) > 0:
+                if info_with_fakelidar:
+                    gt_boxes_lidar = box_utils.boxes3d_kitti_fakelidar_to_lidar(gt_boxes_lidar)
+
+                gt_boxes_lidar[:, 2] -= gt_boxes_lidar[:, 5] / 2
+                anno['location'] = np.zeros((gt_boxes_lidar.shape[0], 3))
+                anno['location'][:, 0] = -gt_boxes_lidar[:, 1]  # x = -y_lidar
+                anno['location'][:, 1] = -gt_boxes_lidar[:, 2]  # y = -z_lidar
+                anno['location'][:, 2] = gt_boxes_lidar[:, 0]  # z = x_lidar
+                dxdydz = gt_boxes_lidar[:, 3:6]
+                anno['dimensions'] = dxdydz[:, [0, 2, 1]]  # lwh ==> lhw
+                anno['rotation_y'] = -gt_boxes_lidar[:, 6] - np.pi / 2.0
+                anno['alpha'] = -np.arctan2(-gt_boxes_lidar[:, 1], gt_boxes_lidar[:, 0]) + anno['rotation_y']
+            else:
+                anno['location'] = anno['dimensions'] = np.zeros((0, 3))
+                anno['rotation_y'] = anno['alpha'] = np.zeros(0)
+            self.annos_kitti.append(anno)
+
     def kitti_eval(self, eval_det_annos, eval_gt_annos, class_names):
         from ..kitti.kitti_object_eval_python import eval as kitti_eval
 

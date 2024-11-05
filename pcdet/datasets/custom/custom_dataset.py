@@ -189,7 +189,7 @@ class CustomDataset(DatasetTemplate):
 
     def get_label(self, idx):
         # get labels
-        label_file = self.root_split_path / 'label_2' / ('%s.txt' % idx)
+        label_file = self.root_split_path / label_2 / ('%s.txt' % idx)
         assert label_file.exists()
         return object3d_custom.get_objects_from_label(label_file)
 
