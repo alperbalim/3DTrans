@@ -61,7 +61,8 @@ for ds in datasets:
         dataset.transform_to_kitti_format()
         annos[ds] = [dataset.annos_kitti[s_ind] for s_ind  in sample_ind[ds]]
         
-# İstatistikleri hesaplayın
+
+
 stats = {}
 
 for ds in datasets:
@@ -102,7 +103,16 @@ for ds in datasets:
         # Voxel sayısını ve voxel başına ortalama nokta sayısını hesaplayın
         total_voxels += len(voxel_grid)
         total_points_in_voxels += sum(len(pts) for pts in voxel_grid.values())
-
+        
+        avg_distance = np.mean(points[:, 2])  # Ortalama Z mesafesi
+        std_dev_distance = np.std(points[:, 2])  # Z mesafesi standart sapması
+        resolution = avg_distance  # Çözünürlük olarak ortalama mesafe
+        volume = (np.max(points[:, 0]) - np.min(points[:, 0])) * (np.max(points[:, 1]) - np.min(points[:, 1])) * (np.max(points[:, 2]) - np.min(points[:, 2]))
+        density = len(points) / volume if volume > 0 else 0  # Yoğunluk hesaplama
+        variances = np.var(points, axis=0)  # Nokta bulutunun varyansı
+        homogeneity = np.mean(variances)  # Homojenlik ölçütü
+        z_range = np.max(points[:, 2]) - np.min(points[:, 2])  # Z eksenindeki yükseklik aralığı
+        
         labels = anno["name"]
         for i, label in enumerate(labels):
             if label in target_labels[ds]:
@@ -120,8 +130,11 @@ for ds in datasets:
                     (points[:, 2] <= (box_center[2] + box_dims[2] / 2))
                 )
                 points_in_box.append(np.sum(mask))
+                # İstatistikleri hesaplayın
 
-    # İstatistikleri hesaplayın
+
+
+
     avg_points = sum(point_counts) / len(point_counts)
     min_box_size = box_sizes[np.argmin((np.prod(np.asarray(box_sizes), axis=1)))]
     max_box_size = box_sizes[np.argmax((np.prod(np.asarray(box_sizes), axis=1)))]
@@ -145,4 +158,5 @@ for ds in datasets:
 import pandas as pd
 
 df = pd.DataFrame(stats).T
+print(df)
 df
