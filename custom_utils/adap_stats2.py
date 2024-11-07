@@ -78,9 +78,9 @@ def compute_mmd(X, Y):
     return np.mean(XX) + np.mean(YY) - 2 * np.mean(XY)
 
 # MMD hesaplamaları için
-n_iterations = 10  # Rastgele örnekleme sayısı
+n_iterations = 2  # Rastgele örnekleme sayısı
 domain_stats = {}
-
+"""
 for i, ds1 in enumerate(datasets):
     for j, ds2 in enumerate(datasets):
         if i < j:  # Sadece bir kez her çifti hesapla
@@ -114,7 +114,7 @@ for i, ds1 in enumerate(datasets):
 # Domainler arası ayrışmayı gösteren istatistikler
 domain_stats_df = pd.DataFrame(domain_stats).T
 print(domain_stats_df)
-
+"""
 # t-SNE ve (mümkünse) UMAP ile verileri görselleştirmek için verileri hazırlama
 all_points = []
 labels = []
