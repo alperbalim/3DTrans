@@ -121,14 +121,15 @@ labels = []
 
 # Her veri setindeki örnekleri topla ve etiketleri belirle
 for ds in datasets:
-    points = np.concatenate([sample['points'][:, :3] for sample in samples[ds]], axis=0)
+    points = np.concatenate([sample['points'][:, :3] for sample in samples[ds][0:10]], axis=0)
     all_points.append(points)
     labels.extend([ds] * len(points))
 
-# Verileri tek bir diziye birleştir
+print(" Verileri tek bir diziye birleştir")
 all_points = np.concatenate(all_points, axis=0)
 
-# t-SNE ile verileri düşük boyuta indir
+
+print("t-SNE ile verileri düşük boyuta indir")# 
 tsne = TSNE(n_components=2, perplexity=30, learning_rate=200, random_state=42)
 tsne_result = tsne.fit_transform(all_points)
 

@@ -1,11 +1,11 @@
-CLASS_NAMES: ['Vehicle', 'Pedestrian', 'Cyclist']
+CLASS_NAMES: ['Vehicle']
 
 DATA_CONFIG:
     _BASE_CONFIG_: cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml
 
 DATA_CONFIG_SRC_2:
     _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/MDF/da_nuscenes_dataset_gt_D_p_2.yaml
-    CLASS_NAMES: ['car', 'pedestrian', 'bicycle']
+    CLASS_NAMES: ['car']
     MAX_SWEEPS: 10
     PRED_VELOCITY: False
     BALANCED_RESAMPLING: False
@@ -43,7 +43,7 @@ MODEL:
         CLASS_AGNOSTIC: False
 
         CLASS_NAMES_EACH_HEAD: [
-            [ 'Vehicle', 'Pedestrian', 'Cyclist', 'car', 'pedestrian', 'bicycle' ]
+            [ 'Vehicle',   'car' ]
         ]
 
         SHARED_CONV_CHANNEL: 64

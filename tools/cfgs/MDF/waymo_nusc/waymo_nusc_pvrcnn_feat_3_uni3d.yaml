@@ -1,7 +1,7 @@
-CLASS_NAMES: ['Vehicle', 'Pedestrian', 'Cyclist']
+CLASS_NAMES: ['Vehicle']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml
     DATA_PROCESSOR:
         -   NAME: mask_points_and_boxes_outside_range
             REMOVE_OUTSIDE_BOXES: True
@@ -14,7 +14,7 @@ DATA_CONFIG:
             }
 
         -   NAME: transform_points_to_voxels_placeholder
-            VOXEL_SIZE: [ 0.10, 0.10, 0.10 ]
+            VOXEL_SIZE: [0.0625, 0.0625, 0.2]
     
     PROG_AUG:
         ENABLED: True
@@ -32,11 +32,11 @@ DATA_CONFIG:
                 - waymo_processed_data_v0_5_0_gt_database_train_sampled_1_global.npy
 
               PREPARE: {
-                filter_by_min_points: ['Vehicle:5', 'Pedestrian:5', 'Cyclist:5'],
+                filter_by_min_points: ['Vehicle:5'],
                 filter_by_difficulty: [-1],
               }
 
-              SAMPLE_GROUPS: ['Cyclist:10']
+              SAMPLE_GROUPS: ['Vehicle:5']
               NUM_POINT_FEATURES: 5
               REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
               LIMIT_WHOLE_SCENE: True
@@ -51,8 +51,8 @@ DATA_CONFIG:
               WORLD_SCALE_RANGE: [0.95, 1.05]
 
 DATA_CONFIG_SRC_2:
-    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/MDF/da_nuscenes_dataset_gt_D_p.yaml
-    CLASS_NAMES: ['car', 'pedestrian', 'bicycle']
+    _BASE_CONFIG_: cfgs/dataset_configs/nuscenes/MDF/da_nuscenes_dataset_gt_D_p_2.yaml
+    CLASS_NAMES: ['car']
     MAX_SWEEPS: 10
     SHIFT_COOR: [0.0, 0.0, 1.8]
     PRED_VELOCITY: False
@@ -69,7 +69,7 @@ DATA_CONFIG_SRC_2:
             }
 
         -   NAME: transform_points_to_voxels_placeholder
-            VOXEL_SIZE: [ 0.10, 0.10, 0.10 ]
+            VOXEL_SIZE: [0.0625, 0.0625, 0.2]
 
 MODEL:
     NAME: PVRCNN_M_DB
@@ -138,7 +138,7 @@ MODEL:
         CLASS_AGNOSTIC: False
 
         CLASS_NAMES_EACH_HEAD: [
-            [ 'Vehicle', 'Pedestrian', 'Cyclist' ]
+            [ 'Vehicle' ]
         ]
 
         SHARED_CONV_CHANNEL: 64
@@ -168,7 +168,7 @@ MODEL:
 
         POST_PROCESSING:
             SCORE_THRESH: 0.1
-            POST_CENTER_LIMIT_RANGE: [ -75.2, -75.2, -2, 75.2, 75.2, 4 ]
+            POST_CENTER_LIMIT_RANGE: [-47, -47, -4, 47, 47, 4]
             MAX_OBJ_PER_SAMPLE: 500
             NMS_CONFIG:
                 NMS_TYPE: nms_gpu
@@ -251,7 +251,7 @@ MODEL:
         CLASS_AGNOSTIC: False
 
         CLASS_NAMES_EACH_HEAD: [
-            ['car', 'pedestrian', 'bicycle']
+            ['car']
         ]
 
         SHARED_CONV_CHANNEL: 64
@@ -281,7 +281,7 @@ MODEL:
 
         POST_PROCESSING:
             SCORE_THRESH: 0.1
-            POST_CENTER_LIMIT_RANGE: [ -75.2, -75.2, -2, 75.2, 75.2, 4 ]
+            POST_CENTER_LIMIT_RANGE: [-47, -47, -4, 47, 47, 4]
             MAX_OBJ_PER_SAMPLE: 500
             NMS_CONFIG:
                 NMS_TYPE: nms_gpu
