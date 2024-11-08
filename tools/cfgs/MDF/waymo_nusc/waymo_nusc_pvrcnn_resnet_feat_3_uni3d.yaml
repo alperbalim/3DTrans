@@ -95,6 +95,7 @@ MODEL:
         NUM_UPSAMPLE_FILTERS: [256, 256]
 
     DENSE_2D_MoE:
+        NUM_OF_DB: 2
         NAME: DENSE_2D_CR_ADD
         SOURCE_ONE_NAME: waymo
         INPUT_CONV_CHANNEL: 512
