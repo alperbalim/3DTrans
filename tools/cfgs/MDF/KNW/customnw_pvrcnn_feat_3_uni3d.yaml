@@ -30,8 +30,8 @@ DATA_CONFIG_SRC_2:
               DB_INFO_PATH:
                   - custom_dbinfos_train.pkl
               PREPARE: {
-                 filter_by_min_points: ['Car:5'],
-                 filter_by_difficulty: [-1],
+                 filter_by_min_points: ['Car:5']
+                 #filter_by_difficulty: [-1],
               }
 
               SAMPLE_GROUPS: ['Car:15']
