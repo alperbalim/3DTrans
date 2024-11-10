@@ -60,7 +60,7 @@ def parse_config():
 def main():
     args, cfg = parse_config()
     
-    if args.source_one_name not in ["waymo", "nusc", "kitti"]:
+    if args.source_one_name not in ["waymo", "nusc", "kitti","custom"]:
         raise RuntimeError('Does not exist for source_one_name')
 
     if args.launcher == 'none':

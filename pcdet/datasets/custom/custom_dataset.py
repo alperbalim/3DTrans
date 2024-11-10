@@ -379,6 +379,7 @@ class CustomDataset(DatasetTemplate):
 
         input_dict = {
             'frame_id': self.sample_id_list[index],
+            'db_flag': "custom"
         }
 
         """
