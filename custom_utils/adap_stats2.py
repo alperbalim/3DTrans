@@ -133,6 +133,8 @@ print("t-SNE ile verileri düşük boyuta indir")#
 tsne = TSNE(n_components=2, perplexity=30, learning_rate=200, random_state=42)
 tsne_result = tsne.fit_transform(all_points)
 
+""" Birleşik
+
 # t-SNE Görselleştirme ve Kaydetme
 plt.figure(figsize=(12, 6))
 plt.subplot(1, 2, 1)
@@ -144,7 +146,23 @@ plt.xlabel("t-SNE Component 1")
 plt.ylabel("t-SNE Component 2")
 plt.legend()
 plt.savefig("tsne_visualization.png", dpi=300, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+"""
 
+plt.figure(figsize=(12, 6))
+
+# Her veri kümesi için ayrı bir grafik oluştur
+for i, ds in enumerate(datasets):
+    plt.figure()  # Yeni bir figür oluştur
+    indices = [j for j, label in enumerate(labels) if label == ds]
+    plt.scatter(tsne_result[indices, 0], tsne_result[indices, 1], label=ds, alpha=0.5)
+    plt.title(f"t-SNE Visualization of {ds}")
+    plt.xlabel("t-SNE Component 1")
+    plt.ylabel("t-SNE Component 2")
+    plt.legend()
+    plt.savefig(f"tsne_visualization_{ds}.png", dpi=300, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+
+
+umap_available=True
 # UMAP Görselleştirme ve Kaydetme (eğer UMAP yüklü ise)
 if umap_available:
     plt.figure(figsize=(12, 6))
