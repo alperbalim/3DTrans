@@ -1,5 +1,5 @@
 DATASET: 'CustomDataset'
-DATA_PATH: '../data/custom_kitti2'
+DATA_PATH: '../data/awsim_kitti2'
 # OSS_PATH: 's3://${PATH_TO_DATASET}/kitti'
 
 MAP_CLASS_TO_KITTI: {

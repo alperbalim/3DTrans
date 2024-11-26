@@ -1,8 +1,4 @@
 import sys
-
-sys.path
-
-# Setup
 sys.path.append('/root/3DTrans')
 sys.path.append('/root/3DTrans/custom_utils')
 import random
@@ -13,7 +9,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from pcdet.datasets import build_dataloader
 from torch.utils.data import RandomSampler
-
 
 # Logger setup
 logger = logging.getLogger("pcdet_logger")
@@ -42,7 +37,7 @@ cfg_dict = {}
 for ds, filepath in cfg_files.items():
     cfg_dict[ds] = easyyaml.load(filepath)
 
-sample_size = 500
+sample_size = 100
 
 # Load datasets and create samples
 data_loaders = {}
@@ -65,35 +60,59 @@ for ds in datasets:
         dataset.transform_to_kitti_format()
         annos[ds] = [dataset.annos_kitti[i] for i in sample_indices]
 
-# Extract object sizes and create violin plots
-object_sizes = {ds: {"length": [], "width": [], "height": []} for ds in datasets}
+# Calculate points falling on each object
+points_in_box_data = {ds: [] for ds in datasets}
 
-datasets_ordered =['nuscenes', 'waymo', 'custom', 'awsim']
-
-for ds in datasets_ordered:
-    for anno in annos[ds]:
+for ds in datasets:
+    for sample, anno in zip(samples[ds], annos[ds]):
+        points = sample['points'][:, :3]
         for i in range(len(anno["dimensions"])):
+            box_center = anno["location"][i]
             box_dims = anno["dimensions"][i]
-            object_sizes[ds]["length"].append(box_dims[0])
-            object_sizes[ds]["width"].append(box_dims[1])
-            object_sizes[ds]["height"].append(box_dims[2])
 
-# Create violin plots for Length, Width, and Height
-fig, axes = plt.subplots(1, 3, figsize=(15, 5))
-dimensions = ["length", "width", "height"]
-titles = ["Length", "Width", "Height"]
-ranges = [(2.0, 7.0), (1.0, 3.0), (0.5, 3.0)]
+            # Mask to find points within the bounding box
+            mask = (
+                (points[:, 0] >= (box_center[0] - box_dims[0] / 2)) & 
+                (points[:, 0] <= (box_center[0] + box_dims[0] / 2)) &
+                (points[:, 1] >= (box_center[1] - box_dims[1] / 2)) &
+                (points[:, 1] <= (box_center[1] + box_dims[1] / 2)) &
+                (points[:, 2] >= (box_center[2] - box_dims[2] / 2)) &
+                (points[:, 2] <= (box_center[2] + box_dims[2] / 2))
+            )
 
-for idx, (dim, title, value_range) in enumerate(zip(dimensions, titles, ranges)):
-    data = [np.clip(object_sizes[ds][dim], value_range[0], value_range[1]) for ds in datasets]
-    sns.violinplot(data=data, ax=axes[idx])
-    axes[idx].set_title(title)
-    axes[idx].set_xticks(range(len(datasets)))
-    axes[idx].set_xticklabels(['nuScenes', 'WAYMO','Our Real','Our Sim.' ])
-    axes[idx].set_ylim(value_range)
+            # Count points within the bounding box
+            points_in_box_data[ds].append(np.sum(mask))
+
+# Create violin plots for the number of points falling on objects
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Prepare the data for plotting
+violin_data = [points_in_box_data[ds] for ds in datasets]
+
+sns.violinplot(data=violin_data, ax=ax)
+ax.set_title("Number of Points per Object Across Datasets")
+ax.set_xticks(range(len(datasets)))
+ax.set_xticklabels(datasets)
+ax.set_ylabel("Number of Points")
 
 plt.tight_layout()
-#plt.show()
-#plt.title("UMAP Visualization of Point Clouds")
+plt.show()
 plt.legend()
-plt.savefig("object_sizes.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+plt.savefig("object_points.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+
+# Create violin plots for the number of points falling on objects (logarithmic scale)
+fig, ax = plt.subplots(figsize=(12, 6))
+
+# Prepare the data for plotting (logarithmic scale)
+log_violin_data = [np.log1p(points_in_box_data[ds]) for ds in datasets]  # Apply log1p to avoid log(0)
+
+sns.violinplot(data=log_violin_data, ax=ax)
+ax.set_title("Number of Points per Object Across Datasets (Logarithmic Scale)")
+ax.set_xticks(range(len(datasets)))
+ax.set_xticklabels(datasets)
+ax.set_ylabel("Log(Number of Points + 1)")
+
+plt.tight_layout()
+plt.show()
+plt.legend()
+plt.savefig("object_points_log.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
