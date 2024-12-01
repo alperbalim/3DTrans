@@ -87,7 +87,7 @@ filtered_points_in_box_data = {ds: [] for ds in datasets}
 
 for ds in datasets:
     data = np.array(points_in_box_data[ds])
-    filtered_points_in_box_data[ds] = data[(data >= 1) & (data <= 2500)]
+    filtered_points_in_box_data[ds] = [(data >= 1) & (data <= 10000)]
 
 # Create violin plot for the filtered data
 fig, ax = plt.subplots(figsize=(12, 6))
@@ -96,15 +96,16 @@ datasets_ordered =['nuscenes', 'waymo', 'custom', 'awsim']
 # Prepare the data for plotting
 violin_data = [filtered_points_in_box_data[ds] for ds in datasets_ordered]
 
-sns.violinplot(data=violin_data, ax=ax)
-ax.set_ylim(0, 1000)  # Adjust this range as needed to fit your data
+sns.violinplot(data=violin_data, ax=ax)#,log_scale=True)
+#ax.set_ylim(0, 1000)  # Adjust this range as needed to fit your data
 
 #ax.set_title("Number of Points per Object Across Datasets ")
 ax.set_xticks(range(len(datasets)))
 ax.set_xticklabels(['nuScenes', 'WAYMO','Our Real','Our Sim.' ])
 ax.set_ylabel("Number of Points per Vehicle")
+#plt.yscale('log')
 
 plt.tight_layout()
 plt.show()
 plt.legend()
-plt.savefig("object_points_limited2.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+plt.savefig("object_points_limited7.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet

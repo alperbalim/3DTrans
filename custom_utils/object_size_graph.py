@@ -96,4 +96,4 @@ plt.tight_layout()
 #plt.show()
 #plt.title("UMAP Visualization of Point Clouds")
 plt.legend()
-plt.savefig("object_sizes.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+plt.savefig("object_sizes2.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet

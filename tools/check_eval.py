@@ -16,16 +16,26 @@ eval_root = args.eval_root if args.eval_root else input("Ana klasör yolunu giri
 # Sonuçları toplamak için bir liste
 results = []
 
+results.append({
+    "epoch": 0,
+    "bbox": 0,
+    "bev": 0,
+    "3d": 0,
+    "aos": 0,
+    "mean_ap": 0
+})
+
 # `eval` klasöründeki tüm epoch alt klasörlerini dolaş
 eval_list=os.listdir(eval_root)
-eval_list.remove('eval_with_train')
+if 'eval_with_train' in eval_list:
+    eval_list.remove('eval_with_train')
 for epoch_dir in eval_list:
     if os.path.isdir(os.path.join(eval_root, epoch_dir, "test")):
         epoch_path = os.path.join(eval_root, epoch_dir, "test", "default")
     elif os.path.isdir(os.path.join(eval_root, epoch_dir, "val")):
         epoch_path = os.path.join(eval_root, epoch_dir, "val", "default")
     else:
-        pass
+        continue
     if os.path.isdir(epoch_path):
         # `log_eval***` dosyalarını bul
         for file_name in os.listdir(epoch_path):
