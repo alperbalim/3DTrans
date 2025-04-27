@@ -1,17 +1,21 @@
+import sys
+sys.path.insert(0, '/root/3DTrans/')
+sys.path.insert(0, '/root/3DTrans/tools')
+
 import time
 import torch
-from openpcdet.datasets import build_dataloader
-from openpcdet.models import build_network, load_data_to_gpu
-from openpcdet.config import cfg, cfg_from_yaml_file
+from pcdet.datasets import build_dataloader
+from pcdet.models import build_network, load_data_to_gpu
+from pcdet.config import cfg, cfg_from_yaml_file
 from pathlib import Path
 
 # Config dosyanızın yolunu buraya yazın
-cfg_file = 'configs/your_model_config.yaml'
+cfg_file = '/root/3DTrans/output/cfgs/ADA/waymo-custom/pvrcnn_old_anchor/default/pvrcnn_old_anchor.yaml'
 cfg_from_yaml_file(cfg_file, cfg)
 
 # Modeli yükleyin
 model = build_network(model_cfg=cfg.MODEL, num_class=len(cfg.CLASS_NAMES), dataset=None)
-model.load_params_from_file(filename='path/to/your/trained_model.pth', to_cpu=False)
+model.load_params_from_file(filename='/root/3DTrans/output/cfgs/ADA/waymo-custom/pvrcnn_old_anchor/default/ckpt/checkpoint_epoch_11.pth', to_cpu=False)
 model.cuda()
 model.eval()
 

@@ -68,17 +68,26 @@ for ds in datasets:
         for i in range(len(anno["dimensions"])):
             box_center = anno["location"][i]
             box_dims = anno["dimensions"][i]
-            # Mask to find points within the bounding box
-            mask = (
-                (points[:, 0] >= (box_center[0] - box_dims[0] / 2)) & 
-                (points[:, 0] <= (box_center[0] + box_dims[0] / 2)) &
-                (points[:, 1] >= (box_center[1] - box_dims[1] / 2)) &
-                (points[:, 1] <= (box_center[1] + box_dims[1] / 2)) &
-                (points[:, 2] >= (box_center[2] - box_dims[2] / 2)) &
-                (points[:, 2] <= (box_center[2] + box_dims[2] / 2))
-            )
-            # Count points within the bounding box
+            if "rotation_y" in annos[ds][0].keys():
+                box_yaw = anno["rotation_y"][i]
+            elif "heading_angle" in annos[ds][0].keys():
+                box_yaw = anno["heading_angle"][i]
+            shifted_points = points - box_center
+            cos_yaw = np.cos(-box_yaw)  # Yaw için ters dönüş
+            sin_yaw = np.sin(-box_yaw)
+            rotation_matrix = np.array([
+                [cos_yaw, -sin_yaw, 0],
+                [sin_yaw,  cos_yaw, 0],
+                [0,        0,       1]])
+            aligned_points = np.dot(shifted_points, rotation_matrix.T)
+            mask = ((aligned_points[:, 0] >= -box_dims[0] / 2) &
+                    (aligned_points[:, 0] <=  box_dims[0] / 2) &
+                    (aligned_points[:, 1] >= -box_dims[1] / 2) &
+                    (aligned_points[:, 1] <=  box_dims[1] / 2) &
+                    (aligned_points[:, 2] >= -box_dims[2] / 2) &
+                    (aligned_points[:, 2] <=  box_dims[2] / 2))
             points_in_box_data[ds].append(np.abs(np.sum(mask)))
+            
 
 # Filter data to include only points within the range [10, 5000]
 filtered_points_in_box_data = {ds: [] for ds in datasets}
@@ -92,7 +101,7 @@ for ds in datasets:
             else:
                 filtered_points_in_box_data[ds].append(10000)
     ind=random.sample(range(0, len(filtered_points_in_box_data[ds])), 2400)
-    filtered_points_in_box_data[ds] =filtered_points_in_box_data[ds][ind]        
+    filtered_points_in_box_data[ds] =np.asarray(filtered_points_in_box_data[ds])[ind]        
 #filtered_points_in_box_data[ds][i] = [dat if data (data >= 1) & (data <= 10000) else ]
     
 # Create violin plot for the filtered data
@@ -114,4 +123,9 @@ plt.rcParams["font.size"] = 24
 plt.tight_layout()
 plt.show()
 plt.legend()
-plt.savefig("object_points_limited7.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+plt.savefig("object_points_limited11.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+
+
+fig, ax = plt.subplots(figsize=(12, 6))
+plt.hist(filtered_points_in_box_data["custom"])
+plt.savefig("hist.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet

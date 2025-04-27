@@ -96,4 +96,8 @@ plt.tight_layout()
 #plt.show()
 #plt.title("UMAP Visualization of Point Clouds")
 plt.legend()
-plt.savefig("object_sizes2.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+plt.rcParams["font.size"] = 22
+#plt.rcParams["font.family"] = "Times New Roman"
+plt.rcParams['font.family'] = 'serif'
+plt.rcParams['font.serif'] = ['Times New Roman'] + plt.rcParams['font.serif']
+plt.savefig("figures/object_sizes.pdf",format="pdf", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet

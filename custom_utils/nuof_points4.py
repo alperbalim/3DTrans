@@ -8,6 +8,7 @@ import logging
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pcdet.datasets import build_dataloader
+from pcdet.utils import box_utils  # PCDet'in box_utils modülü
 
 # Logger setup
 logger = logging.getLogger("pcdet_logger")
@@ -39,7 +40,6 @@ for ds, filepath in cfg_files.items():
 sample_size = 500
 
 # Load datasets and create samples
-data_loaders = {}
 samples = {}
 annos = {}
 for ds in datasets:
@@ -50,7 +50,7 @@ for ds in datasets:
     dataset = dataloader[0]
     sample_indices = random.sample(range(0, len(dataset)), sample_size)
     samples[ds] = [dataset[i] for i in sample_indices]
-    
+
     if ds in ["custom", "awsim"]:
         annos[ds] = [dataset.custom_infos[i]["annos"] for i in sample_indices]
     elif ds == "waymo":
@@ -59,59 +59,55 @@ for ds in datasets:
         dataset.transform_to_kitti_format()
         annos[ds] = [dataset.annos_kitti[i] for i in sample_indices]
 
-# Calculate points falling on each object
+# Calculate points in boxes using PCDet box_utils
 points_in_box_data = {ds: [] for ds in datasets}
 
 for ds in datasets:
     for sample, anno in zip(samples[ds], annos[ds]):
-        points = sample['points'][:, :3]
-        for i in range(len(anno["dimensions"])):
-            box_center = anno["location"][i]
-            box_dims = anno["dimensions"][i]
-            # Mask to find points within the bounding box
-            mask = (
-                (points[:, 0] >= (box_center[0] - box_dims[0] / 2)) & 
-                (points[:, 0] <= (box_center[0] + box_dims[0] / 2)) &
-                (points[:, 1] >= (box_center[1] - box_dims[1] / 2)) &
-                (points[:, 1] <= (box_center[1] + box_dims[1] / 2)) &
-                (points[:, 2] >= (box_center[2] - box_dims[2] / 2)) &
-                (points[:, 2] <= (box_center[2] + box_dims[2] / 2))
-            )
-            # Count points within the bounding box
-            points_in_box_data[ds].append(np.abs(np.sum(mask)))
+        points = sample['points'][:, :3]  # Noktaların XYZ koordinatları
+        
+        # Kutuların koordinatları (location, dimensions, yaw rotasyonu)
+        box_centers = np.array(anno["location"])
+        box_dims = np.array(anno["dimensions"])
+        
+        if "rotation_y" in anno.keys():
+            box_yaws = np.array(anno["rotation_y"])
+        elif "heading_angle" in anno.keys():
+            box_yaws = np.array(anno["heading_angle"])
+        else:
+            box_yaws = np.zeros(len(box_centers))  # Varsayılan rotasyon 0.0
+        
+        # Kutuları köşe koordinatlarına dönüştür
+        boxes = np.concatenate((box_centers, box_dims, box_yaws[:, None]), axis=1)
 
-# Filter data to include only points within the range [10, 5000]
-filtered_points_in_box_data = {ds: [] for ds in datasets}
+        # PCDet kullanarak noktaların kutular içinde olup olmadığını kontrol et
+        box_idxs = box_utils.points_in_boxes_cpu(points, boxes)  # (N, M) şeklinde sonuç döner
 
-for ds in datasets:
-    data = np.array(points_in_box_data[ds])
-    for dat,i in enumerate(data):
-        if dat>0:
-            if dat<10000:
-                filtered_points_in_box_data[ds].append(dat)
-            else:
-                filtered_points_in_box_data[ds].append(10000)
-    ind=random.sample(range(0, len(filtered_points_in_box_data[ds])), 2400)
-    filtered_points_in_box_data[ds] =filtered_points_in_box_data[ds][ind]        
-#filtered_points_in_box_data[ds][i] = [dat if data (data >= 1) & (data <= 10000) else ]
-    
-# Create violin plot for the filtered data
+        for i in range(len(boxes)):
+            points_in_box = (box_idxs == i).sum()  # Kutudaki nokta sayısını hesapla
+            points_in_box_data[ds].append(points_in_box)
+
+# Violin plot için veriyi filtrele
+filtered_points_in_box_data = {ds: np.array(points_in_box_data[ds])[(np.array(points_in_box_data[ds]) > 10) &
+                                                                    (np.array(points_in_box_data[ds]) < 5000)]
+                               for ds in datasets}
+
+# Violin Plot
 fig, ax = plt.subplots(figsize=(12, 6))
 
-datasets_ordered =['nuscenes', 'waymo', 'custom', 'awsim']
-# Prepare the data for plotting
+datasets_ordered = ['nuscenes', 'waymo', 'custom', 'awsim']
 violin_data = [filtered_points_in_box_data[ds] for ds in datasets_ordered]
 
-sns.violinplot(data=violin_data, ax=ax)#,log_scale=True)
-#ax.set_ylim(0, 1000)  # Adjust this range as needed to fit your data
-
-#ax.set_title("Number of Points per Object Across Datasets ")
-ax.set_xticks(range(len(datasets)))
-ax.set_xticklabels(['nuScenes', 'WAYMO','Our Real','Our Sim.' ])
+sns.violinplot(data=violin_data, ax=ax)
+ax.set_xticks(range(len(datasets_ordered)))
+ax.set_xticklabels(['nuScenes', 'WAYMO', 'Our Real', 'Our Sim.'])
 ax.set_ylabel("Number of Points per Vehicle")
-#plt.yscale('log')
-plt.rcParams["font.size"] = 24
-plt.tight_layout()
-plt.show()
-plt.legend()
-plt.savefig("object_points_limited7.png", dpi=450, bbox_inches='tight')  # Yüksek çözünürlükte PNG olarak kaydet
+plt.savefig("object_points_limited_pc.png", dpi=450, bbox_inches='tight')
+
+# Histogram (örnek için custom dataset)
+fig, ax = plt.subplots(figsize=(12, 6))
+plt.hist(filtered_points_in_box_data["custom"], bins=50, alpha=0.7)
+plt.title("Distribution of Points per Object in Custom Dataset")
+plt.xlabel("Number of Points")
+plt.ylabel("Frequency")
+plt.savefig("histogram_custom_dataset_pc.png", dpi=450, bbox_inches='tight')
