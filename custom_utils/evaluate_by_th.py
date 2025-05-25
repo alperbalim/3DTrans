@@ -5,9 +5,11 @@ import pickle
 import numpy as np
 import pandas as pd
 from pcdet.datasets.kitti.kitti_object_eval_python.eval import *
+from custom_utils.loss_analyze import IoULoss
+
 
 # Tahminleri ve ground truth verilerini yükleme
-with open('/root/3DTrans/output/root/3DTrans/tools/cfgs/custom/pv_rcnn/default/eval/epoch_80/test/default/result.pkl', 'rb') as f:
+with open('/root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl', 'rb') as f:
     predictions = pickle.load(f)
 
 with open('/root/3DTrans/data/custom_kitti2/custom_infos_test.pkl', 'rb') as f:
@@ -47,15 +49,16 @@ res =eval_class(gt_annos,  dt_annos, [0], [0],  2, min_overlaps, compute_aos=Fal
 map = get_mAP_R40(res["precision"])
 print(res)
 
-"""
-    # Sonuçları saklama
-    result = {
-        'Threshold': threshold,
-        'mAP_bbox_R40': mAPbbox_R40[0, 0, 0],
-        'mAP_bev_R40': mAPbev_R40[0, 0, 0],
-        'mAP_3d_R40': mAP3d_R40[0, 0, 0],
-    }
-    results.append(result)
+
+# Sonuçları saklama
+result = {
+    'Threshold': ths,
+    'mAP_bbox_R40': mAPbbox_R40[0, 0, 0],
+    'mAP_bev_R40': mAPbev_R40[0, 0, 0],
+    'mAP_3d_R40': mAP3d_R40[0, 0, 0],
+}
+results=[]
+results.append(result)
 
 # Sonuçları bir DataFrame'e çevirme
 results_df = pd.DataFrame(results)
@@ -64,4 +67,3 @@ results_df = pd.DataFrame(results)
 results_df.to_csv("evaluation_results.csv", index=False)
 
 print("Testler tamamlandı ve sonuçlar evaluation_results.csv dosyasına kaydedildi.")
-"""

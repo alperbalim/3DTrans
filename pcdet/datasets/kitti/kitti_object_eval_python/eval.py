@@ -549,6 +549,7 @@ def eval_class(gt_annos,
         "recall": recall,
         "precision": precision,
         "orientation": aos,
+        "thresholds": thresholds
     }
     return ret_dict
 

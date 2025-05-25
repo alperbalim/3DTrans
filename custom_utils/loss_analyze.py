@@ -64,7 +64,7 @@ class IoULoss(torch.nn.Module):
         union = area1 + area2 - inter
         return inter / union
 
-
+"""
 # Örnek veri
 pred_boxes = torch.tensor([[0.5, 0.5, 0.5, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 2.0, 2.0, 2.0]], requires_grad=True)
 gt_boxes = torch.tensor([[0.5, 0.5, 0.5, 1.0, 1.0, 1.0], [1.5, 1.5, 1.5, 2.0, 2.0, 2.0]])
@@ -80,3 +80,5 @@ manual_grads = compute_manual_grad(pred_boxes, gt_boxes)
 
 print("PyTorch Gradyanları:\n", pytorch_grads)
 print("Manuel Gradyanlar:\n", manual_grads)
+"""
+

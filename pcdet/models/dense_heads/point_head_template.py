@@ -4,6 +4,7 @@ import torch.nn.functional as F
 
 from ...ops.roiaware_pool3d import roiaware_pool3d_utils
 from ...utils import common_utils, loss_utils
+#from ...utils.loss_utils import IoULoss
 
 
 class PointHeadTemplate(nn.Module):
@@ -25,6 +26,8 @@ class PointHeadTemplate(nn.Module):
             self.reg_loss_func = F.smooth_l1_loss
         elif reg_loss_type == 'l1':
             self.reg_loss_func = F.l1_loss
+        elif loss_type == 'iou':
+            self.loss_func = IoULoss()
         elif reg_loss_type == 'WeightedSmoothL1Loss':
             self.reg_loss_func = loss_utils.WeightedSmoothL1Loss(
                 code_weights=losses_cfg.LOSS_WEIGHTS.get('code_weights', None)
