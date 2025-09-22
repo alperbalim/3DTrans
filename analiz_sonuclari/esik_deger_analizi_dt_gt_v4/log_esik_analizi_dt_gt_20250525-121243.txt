@@ -1,0 +1,178 @@
+2025-05-25 12:12:43,715 analiz2.py main 402  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 12:12:43,715 analiz2.py main 403  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:12:43,715 analiz2.py main 404  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:12:43,715 analiz2.py main 405  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v4
+2025-05-25 12:12:43,716 analiz2.py main 406  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 12:12:43,716 analiz2.py main 407  INFO  Değerlendirme IoU Eşiği (AP@X): 0.7
+2025-05-25 12:12:43,716 analiz2.py main 408  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 12:12:43,716 analiz2.py main 409  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 12:12:43,716 analiz2.py main 410  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 12:12:43,716 analiz2.py load_and_prepare_gt_annos 48  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:12:43,726 analiz2.py load_and_prepare_gt_annos 84  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:12:43,738 analiz2.py load_and_prepare_dt_annos 88  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:12:43,744 analiz2.py load_and_prepare_dt_annos 103  INFO  DT .pkl ilk eleman tipi: <class 'dict'>
+2025-05-25 12:12:43,744 analiz2.py load_and_prepare_dt_annos 105  INFO  DT .pkl ilk eleman anahtarları: ['name', 'alpha', 'dimensions', 'location', 'rotation_y', 'score', 'boxes_lidar', 'frame_id']
+2025-05-25 12:12:43,746 analiz2.py load_and_prepare_dt_annos 181  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:12:43,758 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.01
+2025-05-25 12:12:47,401 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2820
+2025-05-25 12:12:47,402 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:47,402 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:47,402 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:47,402 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.10
+2025-05-25 12:12:47,706 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2823
+2025-05-25 12:12:47,706 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:47,706 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:47,706 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:47,706 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.30
+2025-05-25 12:12:48,014 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2888
+2025-05-25 12:12:48,015 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:48,015 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:48,015 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:48,015 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.50
+2025-05-25 12:12:48,322 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 3067
+2025-05-25 12:12:48,323 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:48,323 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:48,323 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:48,323 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.70
+2025-05-25 12:12:48,628 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 3940
+2025-05-25 12:12:48,628 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:48,628 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:48,628 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:48,628 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.01
+2025-05-25 12:12:48,919 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2235
+2025-05-25 12:12:48,919 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:48,919 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:48,919 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:48,919 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.10
+2025-05-25 12:12:49,206 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2238
+2025-05-25 12:12:49,206 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:49,207 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:49,207 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:49,207 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.30
+2025-05-25 12:12:49,495 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2243
+2025-05-25 12:12:49,496 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:49,496 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:49,496 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:49,496 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.50
+2025-05-25 12:12:49,782 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2260
+2025-05-25 12:12:49,783 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:49,783 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:49,783 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:49,783 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.70
+2025-05-25 12:12:50,072 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2500
+2025-05-25 12:12:50,073 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:50,073 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:50,073 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:50,073 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.01
+2025-05-25 12:12:50,352 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1915
+2025-05-25 12:12:50,353 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:50,353 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:50,353 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:50,353 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.10
+2025-05-25 12:12:50,629 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1916
+2025-05-25 12:12:50,629 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:50,630 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:50,630 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:50,630 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.30
+2025-05-25 12:12:50,912 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1918
+2025-05-25 12:12:50,912 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:50,912 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:50,912 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:50,912 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.50
+2025-05-25 12:12:51,193 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1918
+2025-05-25 12:12:51,194 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:51,194 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:51,194 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:51,194 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.70
+2025-05-25 12:12:51,471 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1958
+2025-05-25 12:12:51,472 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:51,472 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:51,472 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:51,472 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.01
+2025-05-25 12:12:51,734 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:12:51,735 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:51,735 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:51,735 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:51,735 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.10
+2025-05-25 12:12:51,995 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:12:51,995 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:51,996 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:51,996 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:51,996 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.30
+2025-05-25 12:12:52,254 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:12:52,255 analiz2.py evaluate_kitti_directamente 367 ERROR  kitti_eval.eval_class veya AP hesaplama sırasında hata: eval_class() got an unexpected keyword argument 'min_overlap'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 341, in evaluate_kitti_directamente
+    compute_aos=False, num_parts=num_parts
+TypeError: eval_class() got an unexpected keyword argument 'min_overlap'
+2025-05-25 12:12:52,255 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:12:52,255 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:12:52,255 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.50

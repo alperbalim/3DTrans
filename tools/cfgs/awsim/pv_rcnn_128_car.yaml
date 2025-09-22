@@ -1,7 +1,7 @@
-CLASS_NAMES: ['Car', 'Pedestrian', 'Cyclist']
+CLASS_NAMES: ['Car']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: cfgs/dataset_configs/custom/awsim_dataset_custom_32.yaml
+    _BASE_CONFIG_: cfgs/dataset_configs/custom/awsim_dataset_custom.yaml
     DATA_AUGMENTOR:
         DISABLE_AUG_LIST: ['placeholder']
         AUG_CONFIG_LIST:
@@ -10,10 +10,10 @@ DATA_CONFIG:
               DB_INFO_PATH:
                   - custom_dbinfos_train.pkl
               PREPARE: {
-                 filter_by_min_points: ['Car:10', 'Pedestrian:10', 'Cyclist:10']
+                 filter_by_min_points: ['Car:10']
               }
 
-              SAMPLE_GROUPS: ['Car:15','Pedestrian:10', 'Cyclist:10']
+              SAMPLE_GROUPS: ['Car:15']
               NUM_POINT_FEATURES: 4
               DATABASE_WITH_FAKELIDAR: False
               REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
@@ -69,26 +69,6 @@ MODEL:
                 'feature_map_stride': 8,
                 'matched_threshold': 0.6,
                 'unmatched_threshold': 0.45
-            },
-            {
-                'class_name': 'Pedestrian',
-                'anchor_sizes': [[0.8, 0.6, 1.73]],
-                'anchor_rotations': [0, 1.57],
-                'anchor_bottom_heights': [-0.6],
-                'align_center': False,
-                'feature_map_stride': 8,
-                'matched_threshold': 0.5,
-                'unmatched_threshold': 0.35
-            },
-            {
-                'class_name': 'Cyclist',
-                'anchor_sizes': [[1.76, 0.6, 1.73]],
-                'anchor_rotations': [0, 1.57],
-                'anchor_bottom_heights': [-0.6],
-                'align_center': False,
-                'feature_map_stride': 8,
-                'matched_threshold': 0.5,
-                'unmatched_threshold': 0.35
             }
         ]
 
@@ -190,14 +170,14 @@ MODEL:
         TARGET_CONFIG:
             BOX_CODER: ResidualCoder
             ROI_PER_IMAGE: 128
-            FG_RATIO: 0.7
+            FG_RATIO: 0.5
 
             SAMPLE_ROI_BY_EACH_CLASS: True
             CLS_SCORE_TYPE: roi_iou
 
             CLS_FG_THRESH: 0.75
             CLS_BG_THRESH: 0.25
-            CLS_BG_THRESH_LO: 0.3
+            CLS_BG_THRESH_LO: 0.1
             HARD_BG_RATIO: 0.8
 
             REG_FG_THRESH: 0.55
@@ -229,7 +209,7 @@ MODEL:
 
 
 OPTIMIZATION:
-    BATCH_SIZE_PER_GPU: 4
+    BATCH_SIZE_PER_GPU: 2
     NUM_EPOCHS: 80
 
     OPTIMIZER: adam_onecycle

@@ -134,7 +134,6 @@ pr_f1_at_confidence_thresholds = {}
 
 print(f"Analiz Edilen IoU Eşikleri: {iou_thresholds_for_confidence_analysis}")
 
-confidence_thresholds_to_analyze
 
 print("Analiz Edilen Güven Skoru Eşikleri Aralığı:", f"{confidence_thresholds_to_analyze[0]:.2f}","-", f"{confidence_thresholds_to_analyze[-1]:.2f}","(", f"{len(confidence_thresholds_to_analyze)}", "adım)")
 
@@ -190,13 +189,13 @@ for current_iou_for_analysis in iou_thresholds_for_confidence_analysis:
             # thresholds azalan sırada. valid_indices'deki ilk eleman, conf_threshold'dan >= olan en yüksek skora sahip detection'ın indeksidir.
             # Bu indeksteki precision_points ve recall_points değerleri, skoru >= confidence_points[first_valid_index] olan tüm detection'lar dikkate alındığında elde edilen P/R'dir.
             # Bu, istediğimiz conf_threshold eşiğiyle elde edilen performansa en yakın, eval_class çıktısından doğrudan alınabilen noktadır.
-            first_valid_index = valid_indices
-            p = precision_points[first_valid_index]
-            r = recall_points[first_valid_index]
+            first_valid_index = np.squeeze(valid_indices)
+            p = np.squeeze(precision_points)[first_valid_index]
+            r = np.squeeze(recall_points)[first_valid_index]
 
             # F1-skoru hesapla: 2 * (P * R) / (P + R). P+R sıfırsa, F1 sıfırdır [13, 19, 24].
             denominator = p + r
-            f1 = 2 * (p * r) / denominator if denominator > 1e-6 else 0.0 # Float hassasiyeti için küçük eşik kullan [24].
+            f1 = 2 * (p * r) / denominator if denominator.all() > 1e-6 else 0.0 # Float hassasiyeti için küçük eşik kullan [24].
 
             pr_f1_at_confidence_thresholds[current_iou_for_analysis][conf_threshold] = {
                 'Precision': p,

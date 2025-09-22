@@ -76,12 +76,14 @@ for ds in datasets:
             box_yaws = np.array(anno["heading_angle"])
         else:
             box_yaws = np.zeros(len(box_centers))  # Varsayılan rotasyon 0.0
-        
+            
+        box_yaws = box_yaws.reshape(box_yaws.shape[0],1)
+
         # Kutuları köşe koordinatlarına dönüştür
-        boxes = np.concatenate((box_centers, box_dims, box_yaws[:, None]), axis=1)
+        boxes = np.concatenate((box_centers, box_dims, box_yaws), axis=1)
 
         # PCDet kullanarak noktaların kutular içinde olup olmadığını kontrol et
-        box_idxs = box_utils.points_in_boxes_cpu(points, boxes)  # (N, M) şeklinde sonuç döner
+        box_idxs = roiaware_pool3d_utils.points_in_boxes_cpu(points, boxes)  # (N, M) şeklinde sonuç döner
 
         for i in range(len(boxes)):
             points_in_box = (box_idxs == i).sum()  # Kutudaki nokta sayısını hesapla

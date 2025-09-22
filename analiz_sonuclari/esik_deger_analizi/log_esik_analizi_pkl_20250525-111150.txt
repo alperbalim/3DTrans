@@ -1,0 +1,221 @@
+2025-05-25 11:11:50,014 complete_analyze.py main 246  INFO  Eşik değeri analizi başlatılıyor (PKL dosyası ile, sabit parametrelerle)...
+2025-05-25 11:11:50,014 complete_analyze.py main 247  INFO  Yapılandırma Dosyası (veri seti için): /root/3DTrans/tools/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d.yaml
+2025-05-25 11:11:50,014 complete_analyze.py main 248  INFO  Tahminlerin PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:11:50,014 complete_analyze.py main 249  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi
+2025-05-25 11:11:50,014 complete_analyze.py main 250  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7]
+2025-05-25 11:11:50,014 complete_analyze.py main 251  INFO  Test edilecek NMS IoU Eşikleri: [0.1, 0.3, 0.5, 0.7]
+2025-05-25 11:11:50,014 complete_analyze.py load_predictions_from_pkl 44  INFO  .pkl dosyasından tahminler yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:11:50,021 complete_analyze.py load_predictions_from_pkl 54  INFO  500 örnek için tahminler yüklendi.
+2025-05-25 11:11:50,065 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.1, NMS IoU=0.1): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,108 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.1, NMS IoU=0.3): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,151 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.1, NMS IoU=0.5): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,194 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.1, NMS IoU=0.7): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,236 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.3, NMS IoU=0.1): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,279 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.3, NMS IoU=0.3): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,431 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.3, NMS IoU=0.5): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,476 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.3, NMS IoU=0.7): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,519 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.5, NMS IoU=0.1): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,562 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.5, NMS IoU=0.3): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,605 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.5, NMS IoU=0.5): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,649 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.5, NMS IoU=0.7): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,692 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.7, NMS IoU=0.1): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,735 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.7, NMS IoU=0.3): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,778 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.7, NMS IoU=0.5): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,821 complete_analyze.py main 283 ERROR  PKL değerlendirme sırasında hata (Güven=0.7, NMS IoU=0.7): [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 274, in main
+    all_evals_base_output_path
+  File "/root/3DTrans/custom_utils/th_analyze/complete_analyze.py", line 68, in run_evaluation_from_pkl
+    cfg_from_yaml_file(config_path, cfg) # Global cfg'yi yükle/güncelle
+  File "/root/3DTrans/pcdet/config.py", line 76, in cfg_from_yaml_file
+    merge_new_config(config=config, new_config=new_config)
+  File "/root/3DTrans/pcdet/config.py", line 66, in merge_new_config
+    merge_new_config(config[key], val)
+  File "/root/3DTrans/pcdet/config.py", line 53, in merge_new_config
+    with open(new_config['_BASE_CONFIG_'], 'r') as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'cfgs/dataset_configs/waymo/MDF/da_waymo_dataset_gt_D_p_2.yaml'
+2025-05-25 11:11:50,824 complete_analyze.py main 293  INFO  Sonuçlar CSV dosyasına kaydedildi: analiz_sonuclari/esik_deger_analizi/esik_analizi_pkl_metrikleri.csv
+2025-05-25 11:11:51,012 complete_analyze.py main 311  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi/metrik_vs_guven_esigi_pkl.png
+2025-05-25 11:11:51,125 complete_analyze.py main 327  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi/metrik_vs_nms_iou_esigi_pkl.png
+2025-05-25 11:11:51,270 complete_analyze.py main 341  INFO  Isı haritası kaydedildi: analiz_sonuclari/esik_deger_analizi/metrik_isi_haritasi_pkl.png
+2025-05-25 11:11:51,270 complete_analyze.py main 349  INFO  PKL üzerinden eşik değeri analizi tamamlandı.

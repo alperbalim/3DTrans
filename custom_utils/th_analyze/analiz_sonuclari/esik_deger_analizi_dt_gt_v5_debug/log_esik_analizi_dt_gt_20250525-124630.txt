@@ -1,0 +1,41 @@
+2025-05-25 12:46:30,640 <ipython-input-3-df6cf7d72e5d> main 265  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile, daha az fonksiyonlu)...
+2025-05-25 12:46:30,642 <ipython-input-3-df6cf7d72e5d> main 267  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:46:30,642 <ipython-input-3-df6cf7d72e5d> main 268  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:46:30,643 <ipython-input-3-df6cf7d72e5d> main 269  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v5_debug
+2025-05-25 12:46:30,644 <ipython-input-3-df6cf7d72e5d> main 270  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 12:46:30,645 <ipython-input-3-df6cf7d72e5d> main 271  INFO  Hedeflenen AP IoU Eşiği (Grafikler için): 0.7
+2025-05-25 12:46:30,646 <ipython-input-3-df6cf7d72e5d> main 272  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3]
+2025-05-25 12:46:30,647 <ipython-input-3-df6cf7d72e5d> main 273  INFO  Test edilecek NMS IoU Eşikleri: [0.5, 0.7]
+2025-05-25 12:46:30,648 <ipython-input-3-df6cf7d72e5d> main 274  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 12:46:30,649 <ipython-input-3-df6cf7d72e5d> load_and_prepare_gt_annos 54  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:46:30,667 <ipython-input-3-df6cf7d72e5d> load_and_prepare_gt_annos 102  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:46:30,682 <ipython-input-3-df6cf7d72e5d> load_and_prepare_dt_annos 106  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:46:30,689 <ipython-input-3-df6cf7d72e5d> load_and_prepare_dt_annos 121  INFO  DT .pkl ilk eleman tipi: <class 'dict'>
+2025-05-25 12:46:30,690 <ipython-input-3-df6cf7d72e5d> load_and_prepare_dt_annos 123  INFO  DT .pkl ilk eleman anahtarları: ['name', 'alpha', 'dimensions', 'location', 'rotation_y', 'score', 'boxes_lidar', 'frame_id']
+2025-05-25 12:46:30,694 <ipython-input-3-df6cf7d72e5d> load_and_prepare_dt_annos 232  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:46:30,708 <ipython-input-3-df6cf7d72e5d> main 302  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.50
+2025-05-25 12:46:30,719 <ipython-input-3-df6cf7d72e5d> main 308  INFO    apply_custom_postprocessing BAŞLADI (conf=0.10, nms_iou=0.50)
+2025-05-25 12:46:34,442 <ipython-input-3-df6cf7d72e5d> main 443  INFO    evaluate_kitti_directamente BAŞLADI (IoU=0.70)
+2025-05-25 12:46:34,444 <ipython-input-3-df6cf7d72e5d> main 454  INFO      Değerlendirmeye giren toplam DT kutu sayısı: 3067
+2025-05-25 12:46:34,991 <ipython-input-3-df6cf7d72e5d> main 528 ERROR      kitti_eval.eval_class veya AP hesaplama sırasında hata: index 2 is out of bounds for axis 1 with size 1
+Traceback (most recent call last):
+  File "<ipython-input-3-df6cf7d72e5d>", line 503, in main
+    compute_aos=False, num_parts=num_parts_for_eval_class
+  File "/root/3DTrans/pcdet/datasets/kitti/kitti_object_eval_python/eval.py", line 489, in eval_class
+    for k, min_overlap in enumerate(min_overlaps[:, metric, m]):
+IndexError: index 2 is out of bounds for axis 1 with size 1
+2025-05-25 12:46:34,994 <ipython-input-3-df6cf7d72e5d> main 535  INFO  SONUÇ: Güven=0.10, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:46:34,995 <ipython-input-3-df6cf7d72e5d> main 302  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.70
+2025-05-25 12:46:35,008 <ipython-input-3-df6cf7d72e5d> main 308  INFO    apply_custom_postprocessing BAŞLADI (conf=0.10, nms_iou=0.70)
+2025-05-25 12:46:35,250 <ipython-input-3-df6cf7d72e5d> main 443  INFO    evaluate_kitti_directamente BAŞLADI (IoU=0.70)
+2025-05-25 12:46:35,251 <ipython-input-3-df6cf7d72e5d> main 454  INFO      Değerlendirmeye giren toplam DT kutu sayısı: 3940
+2025-05-25 12:46:35,363 <ipython-input-3-df6cf7d72e5d> main 528 ERROR      kitti_eval.eval_class veya AP hesaplama sırasında hata: index 2 is out of bounds for axis 1 with size 1
+Traceback (most recent call last):
+  File "<ipython-input-3-df6cf7d72e5d>", line 503, in main
+    compute_aos=False, num_parts=num_parts_for_eval_class
+  File "/root/3DTrans/pcdet/datasets/kitti/kitti_object_eval_python/eval.py", line 489, in eval_class
+    for k, min_overlap in enumerate(min_overlaps[:, metric, m]):
+IndexError: index 2 is out of bounds for axis 1 with size 1
+2025-05-25 12:46:35,365 <ipython-input-3-df6cf7d72e5d> main 535  INFO  SONUÇ: Güven=0.10, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:46:35,366 <ipython-input-3-df6cf7d72e5d> main 302  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.50
+2025-05-25 12:46:35,381 <ipython-input-3-df6cf7d72e5d> main 308  INFO    apply_custom_postprocessing BAŞLADI (conf=0.30, nms_iou=0.50)

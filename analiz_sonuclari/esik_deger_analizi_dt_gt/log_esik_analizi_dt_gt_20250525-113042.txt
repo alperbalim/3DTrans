@@ -1,0 +1,215 @@
+2025-05-25 11:30:42,888 analiz2.py main 339  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 11:30:42,888 analiz2.py main 340  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:30:42,888 analiz2.py main 341  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 11:30:42,888 analiz2.py main 342  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt
+2025-05-25 11:30:42,888 analiz2.py main 343  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 11:30:42,888 analiz2.py main 344  INFO  Değerlendirme IoU Eşiği (mAP@X): 0.7
+2025-05-25 11:30:42,888 analiz2.py main 345  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 11:30:42,888 analiz2.py main 346  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 11:30:42,888 analiz2.py load_and_prepare_gt_annos 63  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 11:30:42,897 analiz2.py load_and_prepare_gt_annos 111  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 11:30:42,908 analiz2.py load_and_prepare_dt_annos 119  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:30:42,916 analiz2.py load_and_prepare_dt_annos 164  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 11:30:42,927 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.01
+2025-05-25 11:30:47,145 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.10, NMS IoU=0.01): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,145 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.10
+2025-05-25 11:30:47,157 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.10, NMS IoU=0.10): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,157 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.30
+2025-05-25 11:30:47,166 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.10, NMS IoU=0.30): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,166 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.50
+2025-05-25 11:30:47,175 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.10, NMS IoU=0.50): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,175 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.70
+2025-05-25 11:30:47,183 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.10, NMS IoU=0.70): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,184 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.01
+2025-05-25 11:30:47,192 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.30, NMS IoU=0.01): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,192 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.10
+2025-05-25 11:30:47,201 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.30, NMS IoU=0.10): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,201 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.30
+2025-05-25 11:30:47,209 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.30, NMS IoU=0.30): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,209 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.50
+2025-05-25 11:30:47,218 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.30, NMS IoU=0.50): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,218 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.70
+2025-05-25 11:30:47,226 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.30, NMS IoU=0.70): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,226 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.01
+2025-05-25 11:30:47,235 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.50, NMS IoU=0.01): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,235 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.10
+2025-05-25 11:30:47,244 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.50, NMS IoU=0.10): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,244 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.30
+2025-05-25 11:30:47,252 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.50, NMS IoU=0.30): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,252 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.50
+2025-05-25 11:30:47,261 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.50, NMS IoU=0.50): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,261 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.70
+2025-05-25 11:30:47,269 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.50, NMS IoU=0.70): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,270 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.01
+2025-05-25 11:30:47,278 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.70, NMS IoU=0.01): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,278 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.10
+2025-05-25 11:30:47,287 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.70, NMS IoU=0.10): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,287 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.30
+2025-05-25 11:30:47,295 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.70, NMS IoU=0.30): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,295 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.50
+2025-05-25 11:30:47,304 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.70, NMS IoU=0.50): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,304 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.70
+2025-05-25 11:30:47,312 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.70, NMS IoU=0.70): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,313 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.01
+2025-05-25 11:30:47,321 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.90, NMS IoU=0.01): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,321 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.10
+2025-05-25 11:30:47,330 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.90, NMS IoU=0.10): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,330 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.30
+2025-05-25 11:30:47,338 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.90, NMS IoU=0.30): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,338 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.50
+2025-05-25 11:30:47,347 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.90, NMS IoU=0.50): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,347 analiz2.py main 364  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.70
+2025-05-25 11:30:47,356 analiz2.py main 398 ERROR  Değerlendirme sırasında hata (Güven=0.90, NMS IoU=0.70): multi_classes_nms() got an unexpected keyword argument 'box_scores'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 378, in main
+    KITTI_CLASS_NAMES_ORDERED # NMS içinde etiketleme için
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 228, in apply_custom_postprocessing
+    score_thresh=None # Zaten uygulandı
+TypeError: multi_classes_nms() got an unexpected keyword argument 'box_scores'
+2025-05-25 11:30:47,358 analiz2.py main 408  INFO  Sonuçlar CSV dosyasına kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt/esik_analizi_dt_gt_metrikleri.csv
+2025-05-25 11:30:47,359 analiz2.py main 456 WARNING  Çizilecek geçerli metrik değeri bulunamadı (tüm değerler NaN). Grafik oluşturma atlanıyor.
+2025-05-25 11:30:47,359 analiz2.py main 458  INFO  Doğrudan DT/GT .pkl dosyaları ile eşik değeri analizi tamamlandı.

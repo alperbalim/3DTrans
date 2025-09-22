@@ -66,6 +66,10 @@ df = pd.DataFrame(results)
 
 # En yüksek ortalama AP değerine sahip epoch'u bul
 best_epoch = df.loc[df["mean_ap"].idxmax()]
+best_bbox= df.loc[df["bbox"].idxmax()]
+best_bev= df.loc[df["bev"].idxmax()]
+best_3d= df.loc[df["3d"].idxmax()]
+best_aos= df.loc[df["aos"].idxmax()]
 
 # Sonuçları ana klasöre kaydet
 output_file = os.path.join(eval_root, "combined_results.csv")
@@ -74,4 +78,8 @@ df.to_csv(output_file, index=False)
 # En iyi epoch sonucunu yazdır
 print("En yüksek ortalama AP değerine sahip epoch bilgisi:")
 print(best_epoch)
+
+print("En yüksek 3d AP değerine sahip epoch bilgisi:")
+print(best_3d)
+
 print(f"Tüm sonuçlar '{output_file}' dosyasına kaydedildi.")

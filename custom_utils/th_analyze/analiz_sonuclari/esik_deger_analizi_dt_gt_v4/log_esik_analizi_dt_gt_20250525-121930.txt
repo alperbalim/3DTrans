@@ -1,0 +1,169 @@
+2025-05-25 12:19:30,161 <ipython-input-1-31a7e7548950> main 402  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 12:19:30,163 <ipython-input-1-31a7e7548950> main 403  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:19:30,164 <ipython-input-1-31a7e7548950> main 404  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:19:30,165 <ipython-input-1-31a7e7548950> main 405  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v4
+2025-05-25 12:19:30,167 <ipython-input-1-31a7e7548950> main 406  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 12:19:30,168 <ipython-input-1-31a7e7548950> main 407  INFO  Değerlendirme IoU Eşiği (AP@X): 0.7
+2025-05-25 12:19:30,168 <ipython-input-1-31a7e7548950> main 408  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 12:19:30,169 <ipython-input-1-31a7e7548950> main 409  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 12:19:30,170 <ipython-input-1-31a7e7548950> main 410  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 12:19:30,171 <ipython-input-1-31a7e7548950> load_and_prepare_gt_annos 48  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:19:30,198 <ipython-input-1-31a7e7548950> load_and_prepare_gt_annos 84  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:19:30,216 <ipython-input-1-31a7e7548950> load_and_prepare_dt_annos 88  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:19:30,224 <ipython-input-1-31a7e7548950> load_and_prepare_dt_annos 103  INFO  DT .pkl ilk eleman tipi: <class 'dict'>
+2025-05-25 12:19:30,225 <ipython-input-1-31a7e7548950> load_and_prepare_dt_annos 105  INFO  DT .pkl ilk eleman anahtarları: ['name', 'alpha', 'dimensions', 'location', 'rotation_y', 'score', 'boxes_lidar', 'frame_id']
+2025-05-25 12:19:30,228 <ipython-input-1-31a7e7548950> load_and_prepare_dt_annos 181  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:19:30,244 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.01
+2025-05-25 12:19:33,923 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2820
+2025-05-25 12:19:39,183 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:39,185 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:39,186 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:39,187 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.10
+2025-05-25 12:19:39,415 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2823
+2025-05-25 12:19:39,519 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:39,521 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:39,522 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:39,523 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.30
+2025-05-25 12:19:39,748 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2888
+2025-05-25 12:19:39,852 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:39,854 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:39,855 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:39,856 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.50
+2025-05-25 12:19:40,077 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 3067
+2025-05-25 12:19:40,189 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:40,190 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:40,191 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:40,192 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.70
+2025-05-25 12:19:40,503 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 3940
+2025-05-25 12:19:40,631 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:40,632 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:40,633 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:40,634 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.01
+2025-05-25 12:19:40,838 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2235
+2025-05-25 12:19:40,925 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:40,926 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:40,927 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:40,928 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.10
+2025-05-25 12:19:41,127 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2238
+2025-05-25 12:19:41,200 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:41,201 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:41,202 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:41,203 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.30
+2025-05-25 12:19:41,408 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2243
+2025-05-25 12:19:41,483 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:41,484 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:41,485 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:41,486 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.50
+2025-05-25 12:19:41,688 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2260
+2025-05-25 12:19:41,760 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:41,762 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:41,763 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:41,764 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.70
+2025-05-25 12:19:41,963 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2500
+2025-05-25 12:19:42,040 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:42,042 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:42,043 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:42,044 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.01
+2025-05-25 12:19:42,234 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1915
+2025-05-25 12:19:42,303 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:42,304 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:42,305 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:42,306 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.10
+2025-05-25 12:19:42,580 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1916
+2025-05-25 12:19:42,646 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:42,647 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:42,648 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:42,649 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.30
+2025-05-25 12:19:42,840 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1918
+2025-05-25 12:19:42,906 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:42,907 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:42,908 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:42,909 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.50
+2025-05-25 12:19:43,102 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1918
+2025-05-25 12:19:43,169 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:43,171 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:43,172 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:43,173 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.70
+2025-05-25 12:19:43,369 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1958
+2025-05-25 12:19:43,440 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:43,441 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:43,442 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:43,443 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.01
+2025-05-25 12:19:43,697 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:19:43,752 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:43,753 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:43,754 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:43,755 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.10
+2025-05-25 12:19:43,937 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:19:43,987 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:43,989 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:43,990 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:43,990 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.30
+2025-05-25 12:19:44,168 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:19:44,218 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:44,219 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:44,220 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:44,221 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.50
+2025-05-25 12:19:44,403 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:19:44,456 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:44,457 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:44,458 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:44,459 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.70
+2025-05-25 12:19:44,638 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1498
+2025-05-25 12:19:44,688 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:44,690 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:44,691 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:44,692 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.01
+2025-05-25 12:19:44,834 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:19:44,871 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:44,873 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:44,874 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:44,875 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.10
+2025-05-25 12:19:45,020 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:19:45,057 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:45,058 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:45,059 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:45,060 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.30
+2025-05-25 12:19:45,263 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:19:45,299 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:45,300 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:45,301 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:45,302 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.50
+2025-05-25 12:19:45,449 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:19:45,485 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:45,487 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:45,488 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:45,489 <ipython-input-1-31a7e7548950> main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.70
+2025-05-25 12:19:45,633 <ipython-input-1-31a7e7548950> main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:19:45,668 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:19:45,669 <ipython-input-1-31a7e7548950> evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:19:45,670 <ipython-input-1-31a7e7548950> main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:19:45,676 <ipython-input-1-31a7e7548950> main 476  INFO  Sonuçlar CSV dosyasına kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/esik_analizi_dt_gt_metrikleri.csv
+2025-05-25 12:19:46,094 <ipython-input-1-31a7e7548950> main 493  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/metrik_vs_guven_esigi_Car_dt_gt.png
+2025-05-25 12:19:46,218 <ipython-input-1-31a7e7548950> main 508  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/metrik_vs_nms_iou_esigi_Car_dt_gt.png
+2025-05-25 12:19:46,394 <ipython-input-1-31a7e7548950> main 522  INFO  Isı haritası kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/metrik_isi_haritasi_Car_dt_gt.png
+2025-05-25 12:19:46,395 <ipython-input-1-31a7e7548950> main 533  INFO  Doğrudan DT/GT .pkl dosyaları ile eşik değeri analizi tamamlandı.
+2025-05-25 12:20:23,641 <ipython-input-3-ce010492c8a2> <module> 26  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 12:20:23,644 <ipython-input-3-ce010492c8a2> <module> 27  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:20:23,646 <ipython-input-3-ce010492c8a2> <module> 28  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:20:23,648 <ipython-input-3-ce010492c8a2> <module> 29  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v4
+2025-05-25 12:20:23,650 <ipython-input-3-ce010492c8a2> <module> 30  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 12:20:23,651 <ipython-input-3-ce010492c8a2> <module> 31  INFO  Değerlendirme IoU Eşiği (AP@X): 0.7
+2025-05-25 12:20:23,655 <ipython-input-3-ce010492c8a2> <module> 32  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 12:20:23,658 <ipython-input-3-ce010492c8a2> <module> 33  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 12:20:23,660 <ipython-input-3-ce010492c8a2> <module> 34  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 12:20:38,680 <ipython-input-4-91c0f11f845a> <module> 26  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 12:20:38,683 <ipython-input-4-91c0f11f845a> <module> 27  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:20:38,688 <ipython-input-4-91c0f11f845a> <module> 28  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:20:38,692 <ipython-input-4-91c0f11f845a> <module> 29  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v4
+2025-05-25 12:20:38,696 <ipython-input-4-91c0f11f845a> <module> 30  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 12:20:38,700 <ipython-input-4-91c0f11f845a> <module> 31  INFO  Değerlendirme IoU Eşiği (AP@X): 0.7
+2025-05-25 12:20:38,703 <ipython-input-4-91c0f11f845a> <module> 32  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 12:20:38,707 <ipython-input-4-91c0f11f845a> <module> 33  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 12:20:38,710 <ipython-input-4-91c0f11f845a> <module> 34  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 12:20:38,713 <ipython-input-2-2f61ef54a01a> load_and_prepare_gt_annos 48  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:20:38,739 <ipython-input-2-2f61ef54a01a> load_and_prepare_gt_annos 84  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:20:38,759 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 88  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:20:38,770 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 103  INFO  DT .pkl ilk eleman tipi: <class 'dict'>
+2025-05-25 12:20:38,772 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 105  INFO  DT .pkl ilk eleman anahtarları: ['name', 'alpha', 'dimensions', 'location', 'rotation_y', 'score', 'boxes_lidar', 'frame_id']
+2025-05-25 12:20:38,778 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 181  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.

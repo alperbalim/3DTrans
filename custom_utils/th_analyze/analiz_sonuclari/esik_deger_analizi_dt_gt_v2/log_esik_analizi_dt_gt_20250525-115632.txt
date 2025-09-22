@@ -1,0 +1,193 @@
+2025-05-25 11:56:32,080 <ipython-input-8-5c7dfee6ebec> main 394  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 11:56:32,085 <ipython-input-8-5c7dfee6ebec> main 395  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:56:32,091 <ipython-input-8-5c7dfee6ebec> main 396  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 11:56:32,095 <ipython-input-8-5c7dfee6ebec> main 397  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v2
+2025-05-25 11:56:32,099 <ipython-input-8-5c7dfee6ebec> main 398  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 11:56:32,102 <ipython-input-8-5c7dfee6ebec> main 399  INFO  Değerlendirme IoU Eşiği (mAP@X): 0.7
+2025-05-25 11:56:32,109 <ipython-input-8-5c7dfee6ebec> main 400  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 11:56:32,112 <ipython-input-8-5c7dfee6ebec> main 401  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 11:56:32,115 <ipython-input-8-5c7dfee6ebec> main 402  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 11:56:32,118 <ipython-input-8-5c7dfee6ebec> load_and_prepare_gt_annos 56  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 11:56:32,142 <ipython-input-8-5c7dfee6ebec> load_and_prepare_gt_annos 93  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 11:56:32,161 <ipython-input-8-5c7dfee6ebec> load_and_prepare_dt_annos 97  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:56:32,175 <ipython-input-8-5c7dfee6ebec> load_and_prepare_dt_annos 183  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 11:56:32,194 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.01
+2025-05-25 11:56:32,491 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:32,496 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:32,500 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.10
+2025-05-25 11:56:32,801 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:32,806 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:32,810 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.30
+2025-05-25 11:56:33,111 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:33,118 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:33,125 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.50
+2025-05-25 11:56:33,542 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:33,549 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:33,553 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.70
+2025-05-25 11:56:33,901 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:33,908 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:33,912 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.01
+2025-05-25 11:56:34,198 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:34,204 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:34,208 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.10
+2025-05-25 11:56:34,484 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:34,490 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:34,494 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.30
+2025-05-25 11:56:34,773 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:34,778 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:34,782 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.50
+2025-05-25 11:56:35,056 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:35,061 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:35,065 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.70
+2025-05-25 11:56:35,350 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:35,355 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:35,359 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.01
+2025-05-25 11:56:35,711 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:35,717 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:35,722 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.10
+2025-05-25 11:56:35,980 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:35,985 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:35,990 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.30
+2025-05-25 11:56:36,252 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:36,258 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:36,262 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.50
+2025-05-25 11:56:36,528 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:36,533 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:36,537 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.70
+2025-05-25 11:56:36,891 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:36,896 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:36,901 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.01
+2025-05-25 11:56:37,133 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:37,138 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:37,143 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.10
+2025-05-25 11:56:37,373 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:37,378 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:37,383 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.30
+2025-05-25 11:56:37,617 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:37,623 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:37,629 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.50
+2025-05-25 11:56:37,861 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:37,868 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:37,875 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.70
+2025-05-25 11:56:38,116 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:38,122 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:38,127 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.01
+2025-05-25 11:56:38,310 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:38,316 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:38,320 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.10
+2025-05-25 11:56:38,568 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:38,574 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:38,582 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.30
+2025-05-25 11:56:38,776 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:38,782 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:38,786 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.50
+2025-05-25 11:56:38,966 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:38,971 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:38,975 <ipython-input-8-5c7dfee6ebec> main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.70
+2025-05-25 11:56:39,150 <ipython-input-8-5c7dfee6ebec> evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+Traceback (most recent call last):
+  File "<ipython-input-8-5c7dfee6ebec>", line 360, in evaluate_kitti_directamente
+    map_3d_r40_value = kitti_eval.average_precision_R40(precision_r40_points)
+AttributeError: module 'pcdet.datasets.kitti.kitti_object_eval_python.eval' has no attribute 'average_precision_R40'
+2025-05-25 11:56:39,155 <ipython-input-8-5c7dfee6ebec> main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:56:39,164 <ipython-input-8-5c7dfee6ebec> main 462  INFO  Sonuçlar CSV dosyasına kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/esik_analizi_dt_gt_metrikleri.csv
+2025-05-25 11:56:39,301 <ipython-input-8-5c7dfee6ebec> main 478  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/metrik_vs_guven_esigi_Car_dt_gt.png
+2025-05-25 11:56:39,428 <ipython-input-8-5c7dfee6ebec> main 493  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/metrik_vs_nms_iou_esigi_Car_dt_gt.png
+2025-05-25 11:56:39,788 <ipython-input-8-5c7dfee6ebec> main 507  INFO  Isı haritası kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/metrik_isi_haritasi_Car_dt_gt.png
+2025-05-25 11:56:39,793 <ipython-input-8-5c7dfee6ebec> main 518  INFO  Doğrudan DT/GT .pkl dosyaları ile eşik değeri analizi tamamlandı.

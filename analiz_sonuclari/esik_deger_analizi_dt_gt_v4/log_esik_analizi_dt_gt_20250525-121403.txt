@@ -1,0 +1,145 @@
+2025-05-25 12:14:03,838 analiz2.py main 402  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 12:14:03,838 analiz2.py main 403  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:14:03,838 analiz2.py main 404  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:14:03,838 analiz2.py main 405  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v4
+2025-05-25 12:14:03,838 analiz2.py main 406  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 12:14:03,838 analiz2.py main 407  INFO  Değerlendirme IoU Eşiği (AP@X): 0.7
+2025-05-25 12:14:03,838 analiz2.py main 408  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 12:14:03,838 analiz2.py main 409  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 12:14:03,838 analiz2.py main 410  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 12:14:03,838 analiz2.py load_and_prepare_gt_annos 48  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:14:03,848 analiz2.py load_and_prepare_gt_annos 84  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:14:03,860 analiz2.py load_and_prepare_dt_annos 88  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:14:03,866 analiz2.py load_and_prepare_dt_annos 103  INFO  DT .pkl ilk eleman tipi: <class 'dict'>
+2025-05-25 12:14:03,866 analiz2.py load_and_prepare_dt_annos 105  INFO  DT .pkl ilk eleman anahtarları: ['name', 'alpha', 'dimensions', 'location', 'rotation_y', 'score', 'boxes_lidar', 'frame_id']
+2025-05-25 12:14:03,868 analiz2.py load_and_prepare_dt_annos 181  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:14:03,880 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.01
+2025-05-25 12:14:07,559 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2820
+2025-05-25 12:14:12,678 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:12,678 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:12,678 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:12,678 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.10
+2025-05-25 12:14:12,894 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2823
+2025-05-25 12:14:12,991 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:12,992 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:12,992 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:12,992 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.30
+2025-05-25 12:14:13,214 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2888
+2025-05-25 12:14:13,322 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:13,323 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:13,323 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:13,323 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.50
+2025-05-25 12:14:13,543 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 3067
+2025-05-25 12:14:13,654 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:13,655 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:13,655 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:13,655 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.70
+2025-05-25 12:14:13,965 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 3940
+2025-05-25 12:14:14,095 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:14,095 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:14,095 analiz2.py main 463  INFO  SONUÇ: Güven=0.10, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:14,095 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.01
+2025-05-25 12:14:14,297 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2235
+2025-05-25 12:14:14,382 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:14,382 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:14,382 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:14,382 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.10
+2025-05-25 12:14:14,582 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2238
+2025-05-25 12:14:14,655 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:14,655 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:14,655 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:14,655 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.30
+2025-05-25 12:14:14,858 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2243
+2025-05-25 12:14:14,931 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:14,932 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:14,932 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:14,932 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.50
+2025-05-25 12:14:15,132 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2260
+2025-05-25 12:14:15,205 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:15,205 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:15,205 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:15,205 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.70
+2025-05-25 12:14:15,407 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 2500
+2025-05-25 12:14:15,486 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:15,486 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:15,486 analiz2.py main 463  INFO  SONUÇ: Güven=0.30, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:15,486 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.01
+2025-05-25 12:14:15,681 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1915
+2025-05-25 12:14:15,748 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:15,748 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:15,748 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:15,748 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.10
+2025-05-25 12:14:16,025 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1916
+2025-05-25 12:14:16,091 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:16,091 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:16,091 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:16,091 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.30
+2025-05-25 12:14:16,285 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1918
+2025-05-25 12:14:16,352 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:16,352 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:16,353 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:16,353 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.50
+2025-05-25 12:14:16,545 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1918
+2025-05-25 12:14:16,611 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:16,611 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:16,611 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:16,611 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.70
+2025-05-25 12:14:16,804 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1958
+2025-05-25 12:14:16,873 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:16,873 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:16,873 analiz2.py main 463  INFO  SONUÇ: Güven=0.50, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:16,873 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.01
+2025-05-25 12:14:17,134 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:14:17,187 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:17,187 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:17,187 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:17,187 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.10
+2025-05-25 12:14:17,371 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:14:17,422 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:17,422 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:17,422 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:17,423 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.30
+2025-05-25 12:14:17,603 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:14:17,654 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:17,654 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:17,654 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:17,654 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.50
+2025-05-25 12:14:17,834 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1494
+2025-05-25 12:14:17,886 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:17,887 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:17,887 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:17,887 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.70
+2025-05-25 12:14:18,064 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 1498
+2025-05-25 12:14:18,116 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:18,116 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:18,116 analiz2.py main 463  INFO  SONUÇ: Güven=0.70, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:18,116 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.01
+2025-05-25 12:14:18,268 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:14:18,303 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:18,303 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:18,303 analiz2.py main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.01, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:18,303 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.10
+2025-05-25 12:14:18,450 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:14:18,487 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:18,487 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:18,487 analiz2.py main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.10, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:18,487 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.30
+2025-05-25 12:14:18,692 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:14:18,727 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:18,727 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:18,727 analiz2.py main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.30, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:18,727 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.50
+2025-05-25 12:14:18,872 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:14:18,906 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:18,907 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:18,907 analiz2.py main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.50, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:18,907 analiz2.py main 430  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.70
+2025-05-25 12:14:19,049 analiz2.py main 446  INFO    Post-processing sonrası toplam DT kutu sayısı: 727
+2025-05-25 12:14:19,083 analiz2.py evaluate_kitti_directamente 363 WARNING  Beklenen 11 kesinlik noktası yerine 41 nokta alındı. AP hesaplanamıyor, 0 olarak ayarlandı.
+2025-05-25 12:14:19,083 analiz2.py evaluate_kitti_directamente 371  INFO  Değerlendirme sonucu [AP(3D,IoU=0.70)]: 0.0000
+2025-05-25 12:14:19,083 analiz2.py main 463  INFO  SONUÇ: Güven=0.90, NMS IoU=0.70, AP(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 12:14:19,086 analiz2.py main 476  INFO  Sonuçlar CSV dosyasına kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/esik_analizi_dt_gt_metrikleri.csv
+2025-05-25 12:14:19,285 analiz2.py main 493  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/metrik_vs_guven_esigi_Car_dt_gt.png
+2025-05-25 12:14:19,411 analiz2.py main 508  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/metrik_vs_nms_iou_esigi_Car_dt_gt.png
+2025-05-25 12:14:19,588 analiz2.py main 522  INFO  Isı haritası kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v4/metrik_isi_haritasi_Car_dt_gt.png
+2025-05-25 12:14:19,589 analiz2.py main 533  INFO  Doğrudan DT/GT .pkl dosyaları ile eşik değeri analizi tamamlandı.

@@ -1,0 +1,15 @@
+2025-05-25 12:20:38,680 <ipython-input-4-91c0f11f845a> <module> 26  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 12:20:38,683 <ipython-input-4-91c0f11f845a> <module> 27  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:20:38,688 <ipython-input-4-91c0f11f845a> <module> 28  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:20:38,692 <ipython-input-4-91c0f11f845a> <module> 29  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v4
+2025-05-25 12:20:38,696 <ipython-input-4-91c0f11f845a> <module> 30  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 12:20:38,700 <ipython-input-4-91c0f11f845a> <module> 31  INFO  Değerlendirme IoU Eşiği (AP@X): 0.7
+2025-05-25 12:20:38,703 <ipython-input-4-91c0f11f845a> <module> 32  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 12:20:38,707 <ipython-input-4-91c0f11f845a> <module> 33  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 12:20:38,710 <ipython-input-4-91c0f11f845a> <module> 34  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 12:20:38,713 <ipython-input-2-2f61ef54a01a> load_and_prepare_gt_annos 48  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 12:20:38,739 <ipython-input-2-2f61ef54a01a> load_and_prepare_gt_annos 84  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 12:20:38,759 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 88  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 12:20:38,770 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 103  INFO  DT .pkl ilk eleman tipi: <class 'dict'>
+2025-05-25 12:20:38,772 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 105  INFO  DT .pkl ilk eleman anahtarları: ['name', 'alpha', 'dimensions', 'location', 'rotation_y', 'score', 'boxes_lidar', 'frame_id']
+2025-05-25 12:20:38,778 <ipython-input-2-2f61ef54a01a> load_and_prepare_dt_annos 181  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.

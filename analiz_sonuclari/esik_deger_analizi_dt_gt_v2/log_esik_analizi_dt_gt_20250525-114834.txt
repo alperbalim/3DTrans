@@ -1,0 +1,193 @@
+2025-05-25 11:48:34,940 analiz2.py main 394  INFO  Eşik değeri analizi başlatılıyor (doğrudan DT/GT .pkl dosyaları ile)...
+2025-05-25 11:48:34,940 analiz2.py main 395  INFO  DT PKL Dosyası: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:48:34,940 analiz2.py main 396  INFO  GT PKL Dosyası: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 11:48:34,940 analiz2.py main 397  INFO  Çıktı Dizini: analiz_sonuclari/esik_deger_analizi_dt_gt_v2
+2025-05-25 11:48:34,940 analiz2.py main 398  INFO  Analiz Edilecek Sınıf: Car (ID: 0)
+2025-05-25 11:48:34,940 analiz2.py main 399  INFO  Değerlendirme IoU Eşiği (mAP@X): 0.7
+2025-05-25 11:48:34,940 analiz2.py main 400  INFO  Test edilecek Güven Eşikleri: [0.1, 0.3, 0.5, 0.7, 0.9]
+2025-05-25 11:48:34,940 analiz2.py main 401  INFO  Test edilecek NMS IoU Eşikleri: [0.01, 0.1, 0.3, 0.5, 0.7]
+2025-05-25 11:48:34,940 analiz2.py main 402  INFO  NMS Ayarları: PRE_MAX=4096, POST_MAX=500, TYPE=nms_gpu
+2025-05-25 11:48:34,940 analiz2.py load_and_prepare_gt_annos 56  INFO  Referans (GT) verisi yükleniyor: /root/3DTrans/data/custom_kitti2/custom_infos_test.pkl
+2025-05-25 11:48:34,949 analiz2.py load_and_prepare_gt_annos 93  INFO  500 GT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 11:48:34,961 analiz2.py load_and_prepare_dt_annos 97  INFO  Tahmin (DT) verisi yükleniyor: /root/3DTrans/output/cfgs/MDF/KNW/customnw_pvrcnn_feat_3_uni3d/default/eval/epoch_2/val/default/result.pkl
+2025-05-25 11:48:34,969 analiz2.py load_and_prepare_dt_annos 183  INFO  500 DT örneği yüklendi ve ham formatta hazırlandı.
+2025-05-25 11:48:34,981 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.01
+2025-05-25 11:48:43,645 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:43,646 analiz2.py main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:43,646 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.10
+2025-05-25 11:48:43,945 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:43,945 analiz2.py main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:43,945 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.30
+2025-05-25 11:48:44,246 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:44,247 analiz2.py main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:44,247 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.50
+2025-05-25 11:48:44,556 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:44,557 analiz2.py main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:44,557 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.10, NMS IoU Eşiği=0.70
+2025-05-25 11:48:44,976 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:44,977 analiz2.py main 449  INFO  SONUÇ: Güven=0.10, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:44,977 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.01
+2025-05-25 11:48:45,241 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:45,241 analiz2.py main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:45,241 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.10
+2025-05-25 11:48:45,496 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:45,496 analiz2.py main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:45,496 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.30
+2025-05-25 11:48:45,752 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:45,752 analiz2.py main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:45,752 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.50
+2025-05-25 11:48:46,007 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:46,007 analiz2.py main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:46,007 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.30, NMS IoU Eşiği=0.70
+2025-05-25 11:48:46,265 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:46,266 analiz2.py main 449  INFO  SONUÇ: Güven=0.30, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:46,266 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.01
+2025-05-25 11:48:46,508 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:46,508 analiz2.py main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:46,508 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.10
+2025-05-25 11:48:46,836 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:46,836 analiz2.py main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:46,836 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.30
+2025-05-25 11:48:47,075 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:47,076 analiz2.py main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:47,076 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.50
+2025-05-25 11:48:47,316 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:47,316 analiz2.py main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:47,316 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.50, NMS IoU Eşiği=0.70
+2025-05-25 11:48:47,574 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:47,574 analiz2.py main 449  INFO  SONUÇ: Güven=0.50, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:47,574 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.01
+2025-05-25 11:48:47,871 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:47,871 analiz2.py main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:47,871 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.10
+2025-05-25 11:48:48,086 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:48,086 analiz2.py main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:48,087 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.30
+2025-05-25 11:48:48,300 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:48,301 analiz2.py main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:48,301 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.50
+2025-05-25 11:48:48,520 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:48,520 analiz2.py main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:48,520 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.70, NMS IoU Eşiği=0.70
+2025-05-25 11:48:48,735 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:48,736 analiz2.py main 449  INFO  SONUÇ: Güven=0.70, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:48,736 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.01
+2025-05-25 11:48:48,899 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:48,899 analiz2.py main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.01, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:48,899 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.10
+2025-05-25 11:48:49,063 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:49,063 analiz2.py main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.10, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:49,063 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.30
+2025-05-25 11:48:49,293 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:49,293 analiz2.py main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.30, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:49,294 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.50
+2025-05-25 11:48:49,459 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:49,459 analiz2.py main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.50, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:49,459 analiz2.py main 422  INFO  İşleniyor: Güven Eşiği=0.90, NMS IoU Eşiği=0.70
+2025-05-25 11:48:49,627 analiz2.py evaluate_kitti_directamente 363 ERROR  kitti_eval.eval_class veya average_precision_R40 sırasında hata: 'precision_R40'
+Traceback (most recent call last):
+  File "/root/3DTrans/custom_utils/th_analyze/analiz2.py", line 351, in evaluate_kitti_directamente
+    if res_eval_class_3d['precision_R40'] is None or res_eval_class_3d['precision_R40'].size == 0:
+KeyError: 'precision_R40'
+2025-05-25 11:48:49,628 analiz2.py main 449  INFO  SONUÇ: Güven=0.90, NMS IoU=0.70, mAP@R40(3D,IoU=0.70)[Car] = 0.0000
+2025-05-25 11:48:49,630 analiz2.py main 462  INFO  Sonuçlar CSV dosyasına kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/esik_analizi_dt_gt_metrikleri.csv
+2025-05-25 11:48:49,826 analiz2.py main 478  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/metrik_vs_guven_esigi_Car_dt_gt.png
+2025-05-25 11:48:49,949 analiz2.py main 493  INFO  Grafik kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/metrik_vs_nms_iou_esigi_Car_dt_gt.png
+2025-05-25 11:48:50,123 analiz2.py main 507  INFO  Isı haritası kaydedildi: analiz_sonuclari/esik_deger_analizi_dt_gt_v2/metrik_isi_haritasi_Car_dt_gt.png
+2025-05-25 11:48:50,123 analiz2.py main 518  INFO  Doğrudan DT/GT .pkl dosyaları ile eşik değeri analizi tamamlandı.

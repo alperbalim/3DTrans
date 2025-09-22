@@ -1,7 +1,6 @@
-import sys
 import pickle
 import numpy as np
-
+import sys
 sys.path.insert(0, '/root/3DTrans/')
 
 from pcdet.datasets.kitti.kitti_object_eval_python.eval import do_eval, eval_class, get_mAP_R40
@@ -58,7 +57,7 @@ for dt in dt_data:
 
 dt_annos_raw = transform_annotations_to_kitti_format(dt_annos_raw, map_name_to_kitti=map_name_to_kitti)
 
-min_overlaps = np.array([0.3, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95])
+min_overlaps = np.array([0.1, 0.2, 0.3, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95])
 
 class_ids_to_eval = [0] # Car class (usually 0 in KITTI)
 difficulty_levels_to_eval = [0] # Single difficulty bin (all combined)
@@ -74,7 +73,7 @@ print("\nCalculating standard mAP (do_eval)...")
 mAPbbox, mAPbev, mAP3d, mAPaos, mAPbbox_R40, mAPbev_R40, mAP3d_R40, mAPaos_R40 = do_eval(
     gt_annos, dt_annos_raw, class_ids_to_eval, min_overlaps_for_map, compute_aos=False
 )
-
+print(mAP3d_R40)
 print("\n--- Standard mAP Results (Car, All Difficulties Combined) ---")
 
 c_idx = 0
